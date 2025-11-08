@@ -7,10 +7,9 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
+    { name: "VA Loans", path: "/va-loans" },
+    { name: "First Time Home Buyer", path: "/first-time-buyer" },
     { name: "Learning Center", path: "/learning-center" },
-    { name: "Contact", path: "/contact" },
   ];
 
   return (
@@ -35,7 +34,7 @@ const Navigation = () => {
               </Link>
             ))}
             <Button asChild variant="default" className="bg-accent hover:bg-accent/90">
-              <Link to="/contact">Get Started</Link>
+              <Link to="/contact">Buy Your Home</Link>
             </Button>
           </div>
 
@@ -64,7 +63,7 @@ const Navigation = () => {
             ))}
             <Button asChild variant="default" className="w-full mt-4 bg-accent hover:bg-accent/90">
               <Link to="/contact" onClick={() => setIsOpen(false)}>
-                Get Started
+                Buy Your Home
               </Link>
             </Button>
           </div>
