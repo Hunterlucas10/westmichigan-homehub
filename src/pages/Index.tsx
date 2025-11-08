@@ -6,51 +6,32 @@ import { Card } from "@/components/ui/card";
 import { Home, DollarSign, GraduationCap, Shield, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-home.jpg";
-
 const Index = () => {
-  const benefits = [
-    {
-      icon: DollarSign,
-      title: "Zero Down Programs",
-      description: "Explore USDA and VA loans that require no down payment for eligible buyers.",
-    },
-    {
-      icon: Home,
-      title: "Low Down Payment Options",
-      description: "FHA loans with as little as 3.5% down make homeownership more accessible.",
-    },
-    {
-      icon: GraduationCap,
-      title: "First-Time Buyer Programs",
-      description: "MSHDA and local programs offer down payment assistance and special rates.",
-    },
-    {
-      icon: Shield,
-      title: "Trusted Local Lenders",
-      description: "Connect with verified West Michigan mortgage specialists who know the area.",
-    },
-  ];
-
-  const programs = [
-    "FHA Loans - 3.5% down payment",
-    "VA Loans - Zero down for veterans",
-    "USDA Loans - Zero down in eligible areas",
-    "MSHDA MI Home Loan - Down payment assistance",
-    "Conventional 97 - Just 3% down",
-    "HomeReady & Home Possible - Special first-time buyer options",
-  ];
-
-  return (
-    <div className="min-h-screen flex flex-col">
+  const benefits = [{
+    icon: DollarSign,
+    title: "Zero Down Programs",
+    description: "Explore USDA and VA loans that require no down payment for eligible buyers."
+  }, {
+    icon: Home,
+    title: "Low Down Payment Options",
+    description: "FHA loans with as little as 3.5% down make homeownership more accessible."
+  }, {
+    icon: GraduationCap,
+    title: "First-Time Buyer Programs",
+    description: "MSHDA and local programs offer down payment assistance and special rates."
+  }, {
+    icon: Shield,
+    title: "Trusted Local Lenders",
+    description: "Connect with verified West Michigan mortgage specialists who know the area."
+  }];
+  const programs = ["FHA Loans - 3.5% down payment", "VA Loans - Zero down for veterans", "USDA Loans - Zero down in eligible areas", "MSHDA MI Home Loan - Down payment assistance", "Conventional 97 - Just 3% down", "HomeReady & Home Possible - Special first-time buyer options"];
+  return <div className="min-h-screen flex flex-col">
       <Navigation />
       
       {/* Hero Section */}
-      <section 
-        className="relative pt-32 pb-20 px-4 bg-cover bg-center"
-        style={{
-          backgroundImage: `linear-gradient(rgba(21, 41, 59, 0.7), rgba(21, 41, 59, 0.8)), url(${heroImage})`,
-        }}
-      >
+      <section className="relative pt-32 pb-20 px-4 bg-cover bg-center" style={{
+      backgroundImage: `linear-gradient(rgba(21, 41, 59, 0.7), rgba(21, 41, 59, 0.8)), url(${heroImage})`
+    }}>
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Column - Content */}
@@ -63,7 +44,7 @@ const Index = () => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-lg px-8">
-                  <a href="#lead-form">Get Matched with a Lender</a>
+                  <a href="#lead-form">Get In Touch with a Local Lender</a>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="bg-background/10 backdrop-blur-sm border-background text-background hover:bg-background/20 text-lg px-8">
                   <Link to="/learning-center">Learn More</Link>
@@ -92,13 +73,11 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((benefit, index) => (
-              <Card key={index} className="p-6 text-center hover:shadow-lg transition-shadow">
+            {benefits.map((benefit, index) => <Card key={index} className="p-6 text-center hover:shadow-lg transition-shadow">
                 <benefit.icon className="w-12 h-12 mx-auto mb-4 text-secondary" />
                 <h3 className="text-xl font-semibold mb-3 text-foreground">{benefit.title}</h3>
                 <p className="text-muted-foreground">{benefit.description}</p>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -116,12 +95,10 @@ const Index = () => {
                 there's a program that fits your needs. Our partner lenders specialize in:
               </p>
               <div className="space-y-3">
-                {programs.map((program, index) => (
-                  <div key={index} className="flex items-start gap-3">
+                {programs.map((program, index) => <div key={index} className="flex items-start gap-3">
                     <CheckCircle className="w-6 h-6 text-secondary flex-shrink-0 mt-0.5" />
                     <span className="text-foreground">{program}</span>
-                  </div>
-                ))}
+                  </div>)}
               </div>
               <Button asChild size="lg" className="mt-8 bg-primary hover:bg-primary/90">
                 <Link to="/learning-center">Explore All Programs</Link>
@@ -157,8 +134,6 @@ const Index = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
