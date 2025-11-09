@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import LeadForm from "@/components/LeadForm";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Home, DollarSign, GraduationCap, Shield, CheckCircle } from "lucide-react";
+import { Home, DollarSign, GraduationCap, Shield, CheckCircle, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-home.jpg";
 const Index = () => {
@@ -24,6 +24,54 @@ const Index = () => {
     title: "Trusted Local Lenders",
     description: "Connect with verified West Michigan mortgage specialists who know the area."
   }];
+  
+  const firstTimeBuyerPrograms = [
+    {
+      icon: Home,
+      title: "FHA Loans",
+      downPayment: "As low as 3.5% down",
+      description: "Perfect for buyers with modest credit scores. FHA loans are government-backed and offer flexible qualification requirements.",
+      highlights: [
+        "Credit scores as low as 580 accepted",
+        "Down payment can be gifted from family",
+        "Lower interest rates than conventional loans",
+      ],
+    },
+    {
+      icon: Shield,
+      title: "MSHDA MI Home Loan",
+      downPayment: "Down payment assistance available",
+      description: "Michigan's best-kept secret! MSHDA offers down payment assistance and lower mortgage rates to qualified first-time buyers.",
+      highlights: [
+        "Up to $7,500 in down payment help",
+        "Below-market interest rates",
+        "Income limits apply (generous for West MI)",
+      ],
+    },
+    {
+      icon: DollarSign,
+      title: "Conventional 97",
+      downPayment: "Just 3% down",
+      description: "A conventional loan option requiring only 3% down payment, ideal for buyers with good credit and stable income.",
+      highlights: [
+        "Lower mortgage insurance than FHA",
+        "No income limits",
+        "MI can be removed when you reach 20% equity",
+      ],
+    },
+    {
+      icon: TrendingUp,
+      title: "USDA Loans",
+      downPayment: "Zero down",
+      description: "For homes in eligible rural and suburban areas around West Michigan. Yes, many Grand Rapids suburbs qualify!",
+      highlights: [
+        "No down payment required",
+        "Competitive interest rates",
+        "Income limits apply",
+      ],
+    },
+  ];
+  
   const programs = ["FHA Loans - 3.5% down payment", "VA Loans - Zero down for veterans", "USDA Loans - Zero down in eligible areas", "MSHDA MI Home Loan - Down payment assistance", "Conventional 97 - Just 3% down", "HomeReady & Home Possible - Special first-time buyer options"];
   return <div className="min-h-screen flex flex-col">
       <Navigation />
@@ -56,6 +104,33 @@ const Index = () => {
             <div id="lead-form">
               <LeadForm variant="hero" />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* First-Time Buyer Programs Section */}
+      <section className="py-16 px-4 bg-muted">
+        <div className="container mx-auto">
+          <h2 className="text-3xl font-bold text-center text-foreground mb-12">
+            First-Time Buyer Programs Available in West Michigan
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {firstTimeBuyerPrograms.map((program, index) => (
+              <Card key={index} className="p-8 hover:shadow-lg transition-shadow">
+                <program.icon className="w-12 h-12 mb-4 text-secondary" />
+                <h3 className="text-2xl font-bold text-foreground mb-2">{program.title}</h3>
+                <p className="text-accent font-semibold mb-4">{program.downPayment}</p>
+                <p className="text-muted-foreground mb-6">{program.description}</p>
+                <ul className="space-y-2">
+                  {program.highlights.map((highlight, hIndex) => (
+                    <li key={hIndex} className="flex gap-2">
+                      <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                      <span className="text-sm text-foreground">{highlight}</span>
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
