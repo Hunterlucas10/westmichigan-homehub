@@ -9,6 +9,8 @@ import LearningCenter from "./pages/LearningCenter";
 import Contact from "./pages/Contact";
 import VALoans from "./pages/VALoans";
 import FirstTimeBuyer from "./pages/FirstTimeBuyer";
+import FirstTimeBuyerPrograms from "./pages/FirstTimeBuyerPrograms";
+import ZeroDownLoans from "./pages/ZeroDownLoans";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +26,8 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/va-loans" element={<VALoans />} />
           <Route path="/first-time-buyer" element={<FirstTimeBuyer />} />
+          <Route path="/first-time-homebuyer-programs-west-michigan" element={<FirstTimeBuyerPrograms />} />
+          <Route path="/zero-down-home-loans-michigan" element={<ZeroDownLoans />} />
           <Route path="/learning-center" element={<LearningCenter />} />
           <Route path="/contact" element={<Contact />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
