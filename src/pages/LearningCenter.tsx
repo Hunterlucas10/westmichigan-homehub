@@ -11,12 +11,14 @@ const LearningCenter = () => {
       description: "Learn about VA and USDA loans that allow you to buy a home with no down payment. Discover eligibility requirements and how to apply.",
       category: "Loan Programs",
       readTime: "8 min read",
+      link: "/zero-down-home-loans-michigan",
     },
     {
       title: "Best First-Time Homebuyer Programs in West Michigan",
       description: "Explore MSHDA, FHA, and conventional programs designed specifically for first-time buyers in the Grand Rapids area.",
       category: "First-Time Buyers",
       readTime: "10 min read",
+      link: "/first-time-homebuyer-programs-west-michigan",
     },
     {
       title: "How to Buy a Home with a Low Credit Score",
@@ -118,9 +120,15 @@ const LearningCenter = () => {
                 </div>
                 <h3 className="text-xl font-bold text-foreground mb-3">{article.title}</h3>
                 <p className="text-muted-foreground mb-4 flex-grow">{article.description}</p>
-                <button className="flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all">
-                  Read Article <ArrowRight className="w-4 h-4" />
-                </button>
+                {article.link ? (
+                  <Link to={article.link} className="flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all">
+                    Read Article <ArrowRight className="w-4 h-4" />
+                  </Link>
+                ) : (
+                  <button className="flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all">
+                    Read Article <ArrowRight className="w-4 h-4" />
+                  </button>
+                )}
               </Card>
             ))}
           </div>

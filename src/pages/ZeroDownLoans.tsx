@@ -1,9 +1,10 @@
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import LeadForm from "@/components/LeadForm";
 import { Card } from "@/components/ui/card";
-import { CheckCircle, Shield, Home, DollarSign, FileCheck } from "lucide-react";
+import { CheckCircle, Shield, Home, DollarSign, FileCheck, ChevronRight } from "lucide-react";
 
 const ZeroDownLoans = () => {
   const programs = [
@@ -11,6 +12,7 @@ const ZeroDownLoans = () => {
       icon: Shield,
       title: "VA Loans",
       description: "Available to eligible veterans and active duty service members, with zero down payment required—and often no private mortgage insurance. Outstanding for West Michigan veterans.",
+      link: "/va-loans"
     },
     {
       icon: Home,
@@ -62,8 +64,19 @@ const ZeroDownLoans = () => {
 
       <Navigation />
       
+      {/* Breadcrumbs */}
+      <section className="pt-24 pb-2 px-4">
+        <div className="container mx-auto max-w-4xl">
+          <nav className="flex items-center gap-2 text-sm text-muted-foreground">
+            <Link to="/" className="hover:text-primary">Home</Link>
+            <ChevronRight className="w-4 h-4" />
+            <span className="text-foreground">Zero-Down Loans</span>
+          </nav>
+        </div>
+      </section>
+      
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-4 bg-gradient-to-b from-primary/10 to-background">
+      <section className="pt-8 pb-16 px-4 bg-gradient-to-b from-primary/10 to-background">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
@@ -113,7 +126,17 @@ const ZeroDownLoans = () => {
               <Card key={index} className="p-6 hover:shadow-lg transition-shadow">
                 <program.icon className="w-12 h-12 mb-4 text-secondary" />
                 <h3 className="text-xl font-bold text-foreground mb-3">{program.title}</h3>
-                <p className="text-muted-foreground">{program.description}</p>
+                <p className="text-muted-foreground">
+                  {program.description}
+                  {program.link && (
+                    <>
+                      {" "}
+                      <Link to={program.link} className="text-primary hover:underline">
+                        Learn more →
+                      </Link>
+                    </>
+                  )}
+                </p>
               </Card>
             ))}
           </div>
@@ -150,7 +173,11 @@ const ZeroDownLoans = () => {
               In fast-growing markets like Grand Rapids, Holland, Muskegon or Kalamazoo, a "zero-down path" means 
               you don't have to wait years to save a large down payment. You can act sooner, lock in rates, and 
               start building equity. Lenders in West Michigan who specialise in these programs understand the local 
-              market and can streamline the process.
+              market and can streamline the process. If you're a first-time buyer, also explore our{" "}
+              <Link to="/first-time-homebuyer-programs-west-michigan" className="text-primary hover:underline">
+                first-time homebuyer programs guide
+              </Link>{" "}
+              for additional assistance options.
             </p>
             <p className="text-muted-foreground">
               Plus, you'll have help navigating home-buyer education, local inspection rules, and county-specific 
@@ -218,6 +245,42 @@ const ZeroDownLoans = () => {
           <Card className="p-8">
             <LeadForm />
           </Card>
+        </div>
+      </section>
+
+      {/* Related Resources */}
+      <section className="py-16 px-4 bg-background border-t border-border">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-2xl font-bold text-foreground mb-8">Related Resources</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <Card className="p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-lg font-bold text-foreground mb-3">First-Time Buyer Programs</h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                Complete guide to programs for first-time buyers in Michigan
+              </p>
+              <Link to="/first-time-homebuyer-programs-west-michigan" className="text-primary hover:underline text-sm font-medium">
+                Read guide →
+              </Link>
+            </Card>
+            <Card className="p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-lg font-bold text-foreground mb-3">VA Loans</h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                Zero-down benefits for veterans and military members
+              </p>
+              <Link to="/va-loans" className="text-primary hover:underline text-sm font-medium">
+                Learn more →
+              </Link>
+            </Card>
+            <Card className="p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-lg font-bold text-foreground mb-3">Learning Center</h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                Browse all articles and guides
+              </p>
+              <Link to="/learning-center" className="text-primary hover:underline text-sm font-medium">
+                Browse articles →
+              </Link>
+            </Card>
+          </div>
         </div>
       </section>
 

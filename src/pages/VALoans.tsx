@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import LeadForm from "@/components/LeadForm";
@@ -86,7 +87,10 @@ const VALoans = () => {
                 <p className="text-muted-foreground">
                   Unlike conventional loans that often require 3-20% down, VA loans allow you to finance 100% 
                   of your home's purchase price. This means you can buy a home and keep your savings for furniture, 
-                  moving costs, or emergencies.
+                  moving costs, or emergencies. Explore all{" "}
+                  <Link to="/zero-down-home-loans-michigan" className="text-primary hover:underline font-semibold">
+                    zero-down loan options available in Michigan
+                  </Link>.
                 </p>
               </div>
               <div>
@@ -136,7 +140,12 @@ const VALoans = () => {
             </ul>
             <p className="text-muted-foreground mt-6">
               If you're unsure about your eligibility, our partner lenders can help you determine if you qualify 
-              and guide you through obtaining your Certificate of Eligibility (COE).
+              and guide you through obtaining your Certificate of Eligibility (COE). If you're also a first-time buyer, 
+              check out our{" "}
+              <Link to="/first-time-homebuyer-programs-west-michigan" className="text-primary hover:underline">
+                first-time homebuyer programs guide
+              </Link>{" "}
+              for additional assistance options.
             </p>
           </Card>
         </div>

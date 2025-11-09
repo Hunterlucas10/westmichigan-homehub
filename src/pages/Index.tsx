@@ -10,7 +10,8 @@ const Index = () => {
   const benefits = [{
     icon: DollarSign,
     title: "Zero Down Programs",
-    description: "Explore USDA and VA loans that require no down payment for eligible buyers."
+    description: "Explore USDA and VA loans that require no down payment for eligible buyers.",
+    link: "/zero-down-home-loans-michigan"
   }, {
     icon: Home,
     title: "Low Down Payment Options",
@@ -132,6 +133,13 @@ const Index = () => {
               </Card>
             ))}
           </div>
+          <div className="text-center mt-8">
+            <Button asChild size="lg" variant="outline">
+              <Link to="/first-time-homebuyer-programs-west-michigan">
+                View Complete First-Time Buyer Guide →
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
 
@@ -148,11 +156,21 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((benefit, index) => <Card key={index} className="p-6 text-center hover:shadow-lg transition-shadow">
+            {benefits.map((benefit, index) => (
+              <Card key={index} className="p-6 text-center hover:shadow-lg transition-shadow">
                 <benefit.icon className="w-12 h-12 mx-auto mb-4 text-secondary" />
-                <h3 className="text-xl font-semibold mb-3 text-foreground">{benefit.title}</h3>
+                <h3 className="text-xl font-semibold mb-3 text-foreground">
+                  {benefit.link ? (
+                    <Link to={benefit.link} className="hover:text-secondary transition-colors">
+                      {benefit.title}
+                    </Link>
+                  ) : (
+                    benefit.title
+                  )}
+                </h3>
                 <p className="text-muted-foreground">{benefit.description}</p>
-              </Card>)}
+              </Card>
+            ))}
           </div>
         </div>
       </section>
@@ -166,7 +184,8 @@ const Index = () => {
                 Loan Programs Available in West Michigan
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
-                Whether you're a first-time buyer, veteran, or looking for low down payment options, 
+                Whether you're a <Link to="/first-time-homebuyer-programs-west-michigan" className="text-primary hover:underline">first-time buyer</Link>, 
+                veteran, or looking for <Link to="/zero-down-home-loans-michigan" className="text-primary hover:underline">zero down payment options</Link>, 
                 there's a program that fits your needs. Our partner lenders specialize in:
               </p>
               <div className="space-y-3">

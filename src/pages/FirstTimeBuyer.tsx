@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import LeadForm from "@/components/LeadForm";
@@ -43,12 +44,13 @@ const FirstTimeBuyer = () => {
       icon: TrendingUp,
       title: "USDA Loans",
       downPayment: "Zero down",
-      description: "For homes in eligible rural and suburban areas around West Michigan. Yes, many Grand Rapids suburbs qualify!",
+      description: "For homes in eligible rural and suburban areas around West Michigan. Yes, many Grand Rapids suburbs qualify! Learn more about all zero-down options.",
       highlights: [
         "No down payment required",
         "Competitive interest rates",
         "Income limits apply",
       ],
+      link: "/zero-down-home-loans-michigan"
     },
   ];
 
@@ -89,7 +91,10 @@ const FirstTimeBuyer = () => {
             <p className="text-xl text-muted-foreground mb-8">
               Buying your first home is exciting—and easier than you think! Discover programs designed 
               specifically to help first-time buyers in West Michigan get into a home with less money down 
-              and more affordable payments.
+              and more affordable payments. For an in-depth look at all available options, check out our{" "}
+              <Link to="/first-time-homebuyer-programs-west-michigan" className="text-primary hover:underline font-semibold">
+                complete first-time homebuyer programs guide
+              </Link>.
             </p>
           </div>
         </div>
@@ -135,7 +140,17 @@ const FirstTimeBuyer = () => {
                 <program.icon className="w-12 h-12 mb-4 text-secondary" />
                 <h3 className="text-2xl font-bold text-foreground mb-2">{program.title}</h3>
                 <p className="text-accent font-semibold mb-4">{program.downPayment}</p>
-                <p className="text-muted-foreground mb-6">{program.description}</p>
+                <p className="text-muted-foreground mb-6">
+                  {program.description}
+                  {program.link && (
+                    <>
+                      {" "}
+                      <Link to={program.link} className="text-primary hover:underline">
+                        Learn more →
+                      </Link>
+                    </>
+                  )}
+                </p>
                 <ul className="space-y-2">
                   {program.highlights.map((highlight, hIndex) => (
                     <li key={hIndex} className="flex gap-2">
@@ -187,7 +202,10 @@ const FirstTimeBuyer = () => {
                   ❌ Myth: "I need 20% down to buy a home"
                 </h3>
                 <p className="text-muted-foreground">
-                  <strong className="text-secondary">Truth:</strong> Most first-time buyers put down 3-5%, and some programs require zero down!
+                  <strong className="text-secondary">Truth:</strong> Most first-time buyers put down 3-5%, and some programs require{" "}
+                  <Link to="/zero-down-home-loans-michigan" className="text-primary hover:underline">
+                    zero down
+                  </Link>!
                 </p>
               </div>
               <div>

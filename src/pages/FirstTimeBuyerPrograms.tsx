@@ -1,9 +1,10 @@
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import LeadForm from "@/components/LeadForm";
 import { Card } from "@/components/ui/card";
-import { CheckCircle, Home, DollarSign, GraduationCap, FileText } from "lucide-react";
+import { CheckCircle, Home, DollarSign, GraduationCap, FileText, ChevronRight } from "lucide-react";
 
 const FirstTimeBuyerPrograms = () => {
   const programs = [
@@ -21,6 +22,7 @@ const FirstTimeBuyerPrograms = () => {
       icon: GraduationCap,
       title: "Federal-Backed Loan Options",
       description: "Programs like FHA (low down payment), VA (zero down for veterans), and USDA (zero down in eligible rural areas) provide additional paths for first-time buyers.",
+      link: "/zero-down-home-loans-michigan"
     },
   ];
 
@@ -62,8 +64,21 @@ const FirstTimeBuyerPrograms = () => {
 
       <Navigation />
       
+      {/* Breadcrumbs */}
+      <section className="pt-24 pb-2 px-4">
+        <div className="container mx-auto max-w-4xl">
+          <nav className="flex items-center gap-2 text-sm text-muted-foreground">
+            <Link to="/" className="hover:text-primary">Home</Link>
+            <ChevronRight className="w-4 h-4" />
+            <Link to="/first-time-buyer" className="hover:text-primary">First-Time Buyers</Link>
+            <ChevronRight className="w-4 h-4" />
+            <span className="text-foreground">Programs Guide</span>
+          </nav>
+        </div>
+      </section>
+      
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-4 bg-gradient-to-b from-primary/10 to-background">
+      <section className="pt-8 pb-16 px-4 bg-gradient-to-b from-primary/10 to-background">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
@@ -116,7 +131,17 @@ const FirstTimeBuyerPrograms = () => {
               <Card key={index} className="p-6 hover:shadow-lg transition-shadow">
                 <program.icon className="w-12 h-12 mb-4 text-secondary" />
                 <h3 className="text-xl font-bold text-foreground mb-3">{program.title}</h3>
-                <p className="text-muted-foreground">{program.description}</p>
+                <p className="text-muted-foreground">
+                  {program.description}
+                  {program.link && (
+                    <>
+                      {" "}
+                      <Link to={program.link} className="text-primary hover:underline">
+                        Learn more →
+                      </Link>
+                    </>
+                  )}
+                </p>
               </Card>
             ))}
           </div>
@@ -204,6 +229,42 @@ const FirstTimeBuyerPrograms = () => {
           <Card className="p-8">
             <LeadForm />
           </Card>
+        </div>
+      </section>
+
+      {/* Related Resources */}
+      <section className="py-16 px-4 bg-background border-t border-border">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-2xl font-bold text-foreground mb-8">Related Resources</h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            <Card className="p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-lg font-bold text-foreground mb-3">Zero-Down Loans</h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                Explore VA, USDA, and other no-money-down options
+              </p>
+              <Link to="/zero-down-home-loans-michigan" className="text-primary hover:underline text-sm font-medium">
+                Read guide →
+              </Link>
+            </Card>
+            <Card className="p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-lg font-bold text-foreground mb-3">First-Time Buyer Overview</h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                Learn the basics and process of buying your first home
+              </p>
+              <Link to="/first-time-buyer" className="text-primary hover:underline text-sm font-medium">
+                Learn more →
+              </Link>
+            </Card>
+            <Card className="p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-lg font-bold text-foreground mb-3">Learning Center</h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                Browse all articles and guides
+              </p>
+              <Link to="/learning-center" className="text-primary hover:underline text-sm font-medium">
+                Browse articles →
+              </Link>
+            </Card>
+          </div>
         </div>
       </section>
 
