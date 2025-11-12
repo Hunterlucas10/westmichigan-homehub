@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import LeadForm from "@/components/LeadForm";
+import HomeownershipQuiz from "@/components/HomeownershipQuiz";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Home, DollarSign, GraduationCap, Shield, CheckCircle, TrendingUp } from "lucide-react";
@@ -101,9 +102,9 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Right Column - Lead Form */}
+            {/* Right Column - Quiz */}
             <div id="lead-form">
-              <LeadForm variant="hero" />
+              <HomeownershipQuiz />
             </div>
           </div>
         </div>
