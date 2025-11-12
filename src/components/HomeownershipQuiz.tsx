@@ -36,7 +36,7 @@ const HomeownershipQuiz = () => {
         if (step < totalSteps) {
           setStep(step + 1);
         }
-      }, 300);
+      }, 400);
     }, 2500);
   };
 
@@ -94,10 +94,10 @@ const HomeownershipQuiz = () => {
   return (
     <Card className="p-6 md:p-8 bg-card/95 backdrop-blur-sm">
       {step === 0 && (
-        <div className="space-y-6 animate-fade-in">
+        <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div>
             <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
-              Can You Buy a Home in Michigan?
+              Can You Buy a Home in Michigan? 🏡
             </h3>
             <p className="text-muted-foreground">
               See what programs and assistance might make homeownership possible for you.
@@ -108,7 +108,7 @@ const HomeownershipQuiz = () => {
             size="lg" 
             className="w-full"
           >
-            Let's Find Out Together
+            Let's Find Out Together ✨
           </Button>
         </div>
       )}
@@ -124,14 +124,14 @@ const HomeownershipQuiz = () => {
           </div>
 
           {showMessage ? (
-            <div className="animate-fade-in bg-secondary/20 border border-secondary p-4 rounded-lg">
+            <div className="animate-in fade-in slide-in-from-top-2 duration-300 bg-secondary/20 border border-secondary p-4 rounded-lg">
               <p className="text-foreground flex items-start gap-2">
                 <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
                 {currentMessage}
               </p>
             </div>
           ) : (
-            <div className="space-y-4 animate-fade-in">
+            <div className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-500">
               {step === 1 && (
                 <>
                   <h4 className="text-xl font-semibold text-foreground">
@@ -140,24 +140,24 @@ const HomeownershipQuiz = () => {
                   <div className="space-y-3">
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary"
+                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
                       onClick={() => handleAnswer("question1", "alone", "Nice! Many buyers qualify solo — let's see what works for you!")}
                     >
-                      Just me
+                      🙋 Just me
                     </Button>
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary"
+                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
                       onClick={() => handleAnswer("question1", "co-borrower", "Nice! Having a co-borrower can often boost your approval odds — but many buyers qualify solo, too!")}
                     >
-                      With a spouse or co-borrower
+                      👫 With a spouse or co-borrower
                     </Button>
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary"
+                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
                       onClick={() => handleAnswer("question1", "not-sure", "No problem! We can explore options for both scenarios.")}
                     >
-                      Not sure yet
+                      🤔 Not sure yet
                     </Button>
                   </div>
                 </>
@@ -171,17 +171,17 @@ const HomeownershipQuiz = () => {
                   <div className="space-y-3">
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary"
+                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
                       onClick={() => handleAnswer("question2", "yes", "Awesome! You may qualify for a VA Loan — 0% down and no mortgage insurance!")}
                     >
-                      Yes
+                      🎖️ Yes
                     </Button>
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary"
+                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
                       onClick={() => handleAnswer("question2", "no", "No worries! There are plenty of low and zero down programs beyond VA options.")}
                     >
-                      No
+                      👤 No
                     </Button>
                   </div>
                 </>
@@ -195,17 +195,17 @@ const HomeownershipQuiz = () => {
                   <div className="space-y-3">
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary"
+                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
                       onClick={() => handleAnswer("question3", "yes", "Great! Did you know some first-time buyer programs can still benefit repeat buyers?")}
                     >
-                      Yes
+                      🏘️ Yes
                     </Button>
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary"
+                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
                       onClick={() => handleAnswer("question3", "no", "Perfect — Michigan has several grants just for first-time buyers!")}
                     >
-                      No
+                      ✨ No
                     </Button>
                   </div>
                 </>
@@ -219,31 +219,31 @@ const HomeownershipQuiz = () => {
                   <div className="space-y-3">
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary"
+                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
                       onClick={() => handleAnswer("question4", "under50", "Got it! Most Michigan programs are income-based, so your range helps us match you with the right fit.")}
                     >
-                      Under $50,000
+                      💵 Under $50,000
                     </Button>
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary"
+                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
                       onClick={() => handleAnswer("question4", "50-80", "Got it! Most Michigan programs are income-based, so your range helps us match you with the right fit.")}
                     >
-                      $50,000–$80,000
+                      💰 $50,000–$80,000
                     </Button>
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary"
+                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
                       onClick={() => handleAnswer("question4", "80-120", "Got it! Most Michigan programs are income-based, so your range helps us match you with the right fit.")}
                     >
-                      $80,000–$120,000
+                      💸 $80,000–$120,000
                     </Button>
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary"
+                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
                       onClick={() => handleAnswer("question4", "over120", "Got it! Most Michigan programs are income-based, so your range helps us match you with the right fit.")}
                     >
-                      Over $120,000
+                      🤑 Over $120,000
                     </Button>
                   </div>
                 </>
@@ -257,31 +257,31 @@ const HomeownershipQuiz = () => {
                   <div className="space-y-3">
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary"
+                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
                       onClick={() => handleAnswer("question5", "under500", "Thanks! We'll use this to estimate your cash flow and see which programs could fit best.")}
                     >
-                      Under $500
+                      📉 Under $500
                     </Button>
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary"
+                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
                       onClick={() => handleAnswer("question5", "500-1000", "Thanks! We'll use this to estimate your cash flow and see which programs could fit best.")}
                     >
-                      $500–$1,000
+                      📊 $500–$1,000
                     </Button>
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary"
+                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
                       onClick={() => handleAnswer("question5", "1000-2000", "Thanks! We'll use this to estimate your cash flow and see which programs could fit best.")}
                     >
-                      $1,000–$2,000
+                      📈 $1,000–$2,000
                     </Button>
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary"
+                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
                       onClick={() => handleAnswer("question5", "over2000", "Thanks! We'll use this to estimate your cash flow and see which programs could fit best.")}
                     >
-                      Over $2,000
+                      💳 Over $2,000
                     </Button>
                   </div>
                 </>
@@ -295,31 +295,31 @@ const HomeownershipQuiz = () => {
                   <div className="space-y-3">
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary"
+                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
                       onClick={() => handleAnswer("question6", "excellent", "Fantastic! You'll likely have multiple loan and assistance options.")}
                     >
-                      Excellent (740+)
+                      ⭐ Excellent (740+)
                     </Button>
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary"
+                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
                       onClick={() => handleAnswer("question6", "good", "Nice! You're in great shape for several popular loan programs.")}
                     >
-                      Good (680–739)
+                      👍 Good (680–739)
                     </Button>
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary"
+                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
                       onClick={() => handleAnswer("question6", "fair", "You're close! Some lenders and programs are flexible with credit scores.")}
                     >
-                      Fair (620–679)
+                      👌 Fair (620–679)
                     </Button>
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary"
+                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
                       onClick={() => handleAnswer("question6", "needs-improvement", "That's okay — homeownership can still be on the horizon. We'll show programs designed to help you get ready.")}
                     >
-                      Needs improvement (below 620)
+                      💪 Needs improvement (below 620)
                     </Button>
                   </div>
                 </>
@@ -331,14 +331,21 @@ const HomeownershipQuiz = () => {
                     Where in Michigan are you looking to buy?
                   </h4>
                   <div className="space-y-3">
-                    {["Grand Rapids area", "Muskegon", "Holland / Zeeland", "Kalamazoo", "Lansing", "Other area"].map((location) => (
+                    {[
+                      { name: "Grand Rapids area", emoji: "🏙️" },
+                      { name: "Muskegon", emoji: "🌊" },
+                      { name: "Holland / Zeeland", emoji: "🌷" },
+                      { name: "Kalamazoo", emoji: "🎓" },
+                      { name: "Lansing", emoji: "🏛️" },
+                      { name: "Other area", emoji: "📍" }
+                    ].map((location) => (
                       <Button
-                        key={location}
+                        key={location.name}
                         variant="outline"
-                        className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary"
-                        onClick={() => handleAnswer("question7", location.toLowerCase(), "Perfect! There are local grants and programs specific to your area — let's check your options.")}
+                        className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
+                        onClick={() => handleAnswer("question7", location.name.toLowerCase(), "Perfect! There are local grants and programs specific to your area — let's check your options.")}
                       >
-                        {location}
+                        {location.emoji} {location.name}
                       </Button>
                     ))}
                   </div>
@@ -350,11 +357,11 @@ const HomeownershipQuiz = () => {
       )}
 
       {results && (
-        <div className="space-y-6 animate-fade-in">
+        <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div className="text-center space-y-2">
-            <CheckCircle className="w-16 h-16 text-secondary mx-auto" />
+            <CheckCircle className="w-16 h-16 text-secondary mx-auto animate-in zoom-in duration-500" />
             <h3 className="text-2xl md:text-3xl font-bold text-foreground">
-              Here's what we found for you!
+              Here's what we found for you! 🎉
             </h3>
           </div>
 
