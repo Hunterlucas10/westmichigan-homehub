@@ -7,15 +7,18 @@ let supabase: ReturnType<typeof createClient> | null = null;
 let resend: Resend | null = null;
 
 function getSupabaseClient() {
-  if (!process.env.SUPABASE_URL || !process.env.SUPABASE_ANON_KEY) {
-    throw new Error('Missing Supabase environment variables: SUPABASE_URL and SUPABASE_ANON_KEY must be set');
+  const supabaseUrl = process.env.SUPABASE_URL;
+  const supabaseKey = process.env.SUPABASE_ANON_KEY;
+  
+  if (!supabaseUrl || !supabaseKey) {
+    const missing = [];
+    if (!supabaseUrl) missing.push('SUPABASE_URL');
+    if (!supabaseKey) missing.push('SUPABASE_ANON_KEY');
+    throw new Error(`Missing Supabase environment variables: ${missing.join(', ')} must be set in Vercel`);
   }
   
   if (!supabase) {
-    supabase = createClient(
-      process.env.SUPABASE_URL,
-      process.env.SUPABASE_ANON_KEY
-    );
+    supabase = createClient(supabaseUrl, supabaseKey);
   }
   return supabase;
 }
@@ -121,11 +124,23 @@ export default async function handler(
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     const isConfigError = errorMessage.includes('Missing Supabase environment variables');
     
+    // Log environment variable status for debugging (don't expose values)
+    console.error('Environment check:', {
+      hasSupabaseUrl: !!process.env.SUPABASE_URL,
+      hasSupabaseKey: !!process.env.SUPABASE_ANON_KEY,
+      supabaseUrlLength: process.env.SUPABASE_URL?.length || 0,
+      supabaseKeyLength: process.env.SUPABASE_ANON_KEY?.length || 0
+    });
+    
     return response.status(500).json({ 
       error: isConfigError ? 'Server configuration error' : 'Failed to submit lead',
       message: errorMessage,
       ...(isConfigError && {
-        hint: 'Please check that SUPABASE_URL and SUPABASE_ANON_KEY are set in Vercel environment variables'
+        hint: 'Please check that SUPABASE_URL and SUPABASE_ANON_KEY are set in Vercel environment variables and redeploy',
+        debug: {
+          hasSupabaseUrl: !!process.env.SUPABASE_URL,
+          hasSupabaseKey: !!process.env.SUPABASE_ANON_KEY
+        }
       })
     });
   }
