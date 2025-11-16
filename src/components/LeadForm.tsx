@@ -20,26 +20,64 @@ const LeadForm = ({ variant = "hero" }: LeadFormProps) => {
     mostImportant: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // In a real app, this would send to backend/database
-    console.log("Lead submitted:", formData);
-    
-    toast({
-      title: "Thank you for your interest!",
-      description: "A local lending specialist will contact you within 24 hours.",
-    });
+    // Disable submit button during submission
+    const submitButton = e.currentTarget.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const originalText = submitButton?.textContent || 'Check My Eligibility';
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = 'Submitting...';
+    }
 
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      city: "",
-      firstTimeBuyer: "",
-      mostImportant: "",
-    });
+    try {
+      const response = await fetch('/api/submit-lead', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          source: 'lead_form'
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to submit');
+      }
+
+      toast({
+        title: "Thank you for your interest!",
+        description: "A local lending specialist will contact you within 24 hours.",
+      });
+
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        city: "",
+        firstTimeBuyer: "",
+        mostImportant: "",
+      });
+    } catch (error) {
+      console.error('Form submission error:', error);
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    } finally {
+      // Re-enable submit button
+      const submitButton = e.currentTarget.querySelector('button[type="submit"]') as HTMLButtonElement;
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = originalText;
+      }
+    }
   };
 
   const handleChange = (field: string, value: string) => {

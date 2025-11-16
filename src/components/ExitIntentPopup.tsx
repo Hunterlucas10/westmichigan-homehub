@@ -42,7 +42,7 @@ const ExitIntentPopup = () => {
     };
   }, [hasShown]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!email) {
@@ -53,16 +53,44 @@ const ExitIntentPopup = () => {
       return;
     }
 
-    // In a real app, this would send to backend/database
-    console.log("Exit intent email captured:", email);
-    
-    toast({
-      title: "Thank you!",
-      description: "Your free guide will be sent to your email shortly.",
-    });
+    try {
+      const response = await fetch('/api/submit-lead', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: 'Exit Intent Lead',
+          email: email,
+          phone: '',
+          city: '',
+          firstTimeBuyer: '',
+          mostImportant: '',
+          source: 'exit_intent_popup'
+        }),
+      });
 
-    setEmail("");
-    setIsOpen(false);
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to submit');
+      }
+
+      toast({
+        title: "Thank you!",
+        description: "Your free guide will be sent to your email shortly.",
+      });
+
+      setEmail("");
+      setIsOpen(false);
+    } catch (error) {
+      console.error('Exit intent submission error:', error);
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
