@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Helmet } from "react-helmet";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -9,35 +10,25 @@ import { BreadcrumbSchema } from "@/components/StructuredData";
 
 const SITE_URL = "https://westmichigan-homehub.com";
 
+interface Article {
+  title: string;
+  description: string;
+  category: string;
+  readTime: string;
+  link: string;
+}
+
 const LearningCenter = () => {
-  const articles = [
+  const [selectedCategory, setSelectedCategory] = useState("All Articles");
+
+  const articles: Article[] = [
+    // Loan Programs
     {
       title: "Zero Down Payment Loans in Michigan: Your Complete Guide",
       description: "Learn about VA and USDA loans that allow you to buy a home with no down payment. Discover eligibility requirements and how to apply.",
       category: "Loan Programs",
       readTime: "8 min read",
       link: "/zero-down-home-loans-michigan",
-    },
-    {
-      title: "Best First-Time Homebuyer Programs in West Michigan",
-      description: "Explore MSHDA, FHA, and conventional programs designed specifically for first-time buyers in the Grand Rapids area.",
-      category: "First-Time Buyers",
-      readTime: "10 min read",
-      link: "/first-time-homebuyer-programs-west-michigan",
-    },
-    {
-      title: "How to Buy a Home with a Low Credit Score",
-      description: "Your credit isn't perfect? No problem. Learn which loan programs are available and how to improve your chances of approval.",
-      category: "Credit & Finances",
-      readTime: "7 min read",
-      link: "/blog/low-credit-score-home-buying",
-    },
-    {
-      title: "Down Payment Assistance Programs in Grand Rapids",
-      description: "Discover local and state programs that can help you cover your down payment and closing costs.",
-      category: "Down Payment Help",
-      readTime: "6 min read",
-      link: "/blog/down-payment-assistance-grand-rapids",
     },
     {
       title: "FHA Loans Explained: Is 3.5% Down Right for You?",
@@ -47,6 +38,150 @@ const LearningCenter = () => {
       link: "/blog/fha-loans-explained",
     },
     {
+      title: "VA Loans for Veterans: Zero Down in West Michigan",
+      description: "Learn how veterans and active military can take advantage of VA loan benefits to buy a home with no down payment and no PMI.",
+      category: "Loan Programs",
+      readTime: "8 min read",
+      link: "/va-loans-michigan",
+    },
+    {
+      title: "MSHDA MI Home Loan: Michigan's Best-Kept Secret",
+      description: "Discover how MSHDA's programs can help you get down payment assistance and lower interest rates for qualified buyers.",
+      category: "Loan Programs",
+      readTime: "7 min read",
+      link: "/blog/mshda-mi-home-loan-guide",
+    },
+    {
+      title: "Understanding PMI: Private Mortgage Insurance Explained",
+      description: "Learn what PMI is, when you need it, how much it costs, and how to avoid or remove it from your mortgage payment.",
+      category: "Loan Programs",
+      readTime: "6 min read",
+      link: "/blog/understanding-pmi",
+    },
+    {
+      title: "Conventional Loans vs. Government Loans: Which is Right for You?",
+      description: "Compare conventional, FHA, VA, and USDA loans to find the best mortgage option for your situation in West Michigan.",
+      category: "Loan Programs",
+      readTime: "10 min read",
+      link: "/zero-down-home-loans-michigan",
+    },
+    {
+      title: "USDA Rural Development Loans in West Michigan",
+      description: "Explore zero down payment options for eligible rural and suburban areas in West Michigan through USDA loans.",
+      category: "Loan Programs",
+      readTime: "7 min read",
+      link: "/zero-down-home-loans-michigan",
+    },
+    // First-Time Buyers
+    {
+      title: "Best First-Time Homebuyer Programs in West Michigan",
+      description: "Explore MSHDA, FHA, and conventional programs designed specifically for first-time buyers in the Grand Rapids area.",
+      category: "First-Time Buyers",
+      readTime: "10 min read",
+      link: "/first-time-homebuyer-programs-west-michigan",
+    },
+    {
+      title: "First-Time Homebuyer Tax Credits in Michigan",
+      description: "Discover available tax credits and deductions that can help first-time buyers save money on their home purchase.",
+      category: "First-Time Buyers",
+      readTime: "5 min read",
+      link: "/blog/first-time-homebuyer-tax-credits-michigan",
+    },
+    {
+      title: "First Generation Homebuyer Grant in Michigan",
+      description: "Learn about special grants and programs available for first-generation homebuyers in West Michigan.",
+      category: "First-Time Buyers",
+      readTime: "6 min read",
+      link: "/first-generation-homebuyer-grant-michigan",
+    },
+    {
+      title: "Homebuyer Education Requirements in Michigan",
+      description: "Understand why homebuyer education is important and which programs require it for loan approval.",
+      category: "First-Time Buyers",
+      readTime: "5 min read",
+      link: "/blog/homebuyer-education-michigan",
+    },
+    // Credit & Finances
+    {
+      title: "How to Buy a Home with a Low Credit Score",
+      description: "Your credit isn't perfect? No problem. Learn which loan programs are available and how to improve your chances of approval.",
+      category: "Credit & Finances",
+      readTime: "7 min read",
+      link: "/blog/low-credit-score-home-buying",
+    },
+    {
+      title: "Credit Score Requirements by Loan Type",
+      description: "Understand the minimum credit score requirements for FHA, VA, conventional, and other loan programs in Michigan.",
+      category: "Credit & Finances",
+      readTime: "8 min read",
+      link: "/blog/credit-score-requirements-by-loan-type",
+    },
+    {
+      title: "How to Improve Your Credit Score Before Buying",
+      description: "Practical steps to boost your credit score quickly and increase your chances of mortgage approval and better rates.",
+      category: "Credit & Finances",
+      readTime: "9 min read",
+      link: "/blog/low-credit-score-home-buying",
+    },
+    {
+      title: "Debt-to-Income Ratio: What Lenders Look For",
+      description: "Learn how your debt-to-income ratio affects mortgage approval and what you can do to improve it.",
+      category: "Credit & Finances",
+      readTime: "6 min read",
+      link: "/first-time-buyer",
+    },
+    {
+      title: "Mortgage Rates in West Michigan: What to Expect",
+      description: "Understand current mortgage rate trends, factors that affect rates, and how to secure the best rate for your loan.",
+      category: "Credit & Finances",
+      readTime: "7 min read",
+      link: "/blog/mortgage-rates-west-michigan",
+    },
+    // Down Payment Help
+    {
+      title: "Down Payment Assistance Programs in Grand Rapids",
+      description: "Discover local and state programs that can help you cover your down payment and closing costs.",
+      category: "Down Payment Help",
+      readTime: "6 min read",
+      link: "/blog/down-payment-assistance-grand-rapids",
+    },
+    {
+      title: "MSHDA Down Payment Assistance: Up to $10,000",
+      description: "Learn about Michigan's MSHDA down payment assistance program that provides up to $10,000 for eligible homebuyers.",
+      category: "Down Payment Help",
+      readTime: "7 min read",
+      link: "/mshda-info-center",
+    },
+    {
+      title: "Down Payment Gift Rules: Using Gift Money for Your Home",
+      description: "Understand the rules and requirements for using gift money from family members toward your down payment.",
+      category: "Down Payment Help",
+      readTime: "5 min read",
+      link: "/blog/down-payment-gift-rules",
+    },
+    {
+      title: "Low Down Payment Options in Michigan",
+      description: "Explore all available low down payment mortgage options, from 3% to 3.5% down payment programs.",
+      category: "Down Payment Help",
+      readTime: "8 min read",
+      link: "/low-down-payment-michigan",
+    },
+    {
+      title: "Down Payment Assistance Programs in West Michigan",
+      description: "Complete guide to all down payment assistance programs available to homebuyers in West Michigan counties.",
+      category: "Down Payment Help",
+      readTime: "9 min read",
+      link: "/down-payment-assistance-west-michigan",
+    },
+    {
+      title: "No Money Down Options in Grand Rapids",
+      description: "Discover zero down payment loan programs available specifically for Grand Rapids area homebuyers.",
+      category: "Down Payment Help",
+      readTime: "7 min read",
+      link: "/no-money-down-grand-rapids",
+    },
+    // Buying Process
+    {
       title: "The Complete Home Buying Process: Step by Step",
       description: "From pre-approval to closing day, understand every step of the homebuying journey in West Michigan.",
       category: "Buying Process",
@@ -54,17 +189,39 @@ const LearningCenter = () => {
       link: "/blog/home-buying-process-step-by-step",
     },
     {
-      title: "VA Loans for Veterans: Zero Down in West Michigan",
-      description: "Learn how veterans and active military can take advantage of VA loan benefits to buy a home with no down payment.",
-      category: "Loan Programs",
-      readTime: "8 min read",
+      title: "Pre-Approval vs. Pre-Qualification: What's the Difference?",
+      description: "Learn the key differences between pre-approval and pre-qualification and why it matters for your home search.",
+      category: "Buying Process",
+      readTime: "6 min read",
+      link: "/blog/pre-approval-vs-pre-qualification",
     },
     {
-      title: "MSHDA MI Home Loan: Michigan's Best-Kept Secret",
-      description: "Discover how MSHDA's programs can help you get down payment assistance and lower interest rates.",
-      category: "Down Payment Help",
+      title: "Closing Costs in Michigan: What to Expect",
+      description: "Understand all the closing costs you'll encounter when buying a home in Michigan and how to prepare for them.",
+      category: "Buying Process",
+      readTime: "8 min read",
+      link: "/blog/closing-costs-michigan",
+    },
+    {
+      title: "Home Inspection Checklist: What Inspectors Look For",
+      description: "Complete guide to home inspections, what inspectors check, and how to use inspection results in negotiations.",
+      category: "Buying Process",
+      readTime: "9 min read",
+      link: "/blog/home-inspection-checklist",
+    },
+    {
+      title: "Refinancing Your First Home: When and Why",
+      description: "Learn when refinancing makes sense, how to qualify, and what to consider before refinancing your mortgage.",
+      category: "Buying Process",
       readTime: "7 min read",
-      link: "/blog/mshda-mi-home-loan-guide",
+      link: "/blog/refinancing-first-home",
+    },
+    {
+      title: "Working with a Real Estate Agent in West Michigan",
+      description: "Tips for finding and working with a great real estate agent who understands the West Michigan market.",
+      category: "Buying Process",
+      readTime: "6 min read",
+      link: "/contact",
     },
   ];
 
@@ -76,6 +233,10 @@ const LearningCenter = () => {
     "Down Payment Help",
     "Buying Process",
   ];
+
+  const filteredArticles = selectedCategory === "All Articles"
+    ? articles
+    : articles.filter(article => article.category === selectedCategory);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -118,11 +279,12 @@ const LearningCenter = () => {
       <section className="py-8 px-4 bg-muted border-y border-border">
         <div className="container mx-auto">
           <div className="flex flex-wrap justify-center gap-3">
-            {categories.map((category, index) => (
+            {categories.map((category) => (
               <button
-                key={index}
+                key={category}
+                onClick={() => setSelectedCategory(category)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                  index === 0
+                  selectedCategory === category
                     ? "bg-primary text-primary-foreground"
                     : "bg-background text-foreground hover:bg-primary/10"
                 }`}
@@ -139,29 +301,34 @@ const LearningCenter = () => {
         <div className="container mx-auto">
           <div className="grid lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
-              <div className="grid md:grid-cols-2 gap-8">
-            {articles.map((article, index) => (
-              <Card key={index} className="p-6 hover:shadow-lg transition-shadow flex flex-col">
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="text-xs font-semibold text-secondary bg-secondary/10 px-3 py-1 rounded-full">
-                    {article.category}
-                  </span>
-                  <span className="text-xs text-muted-foreground">{article.readTime}</span>
+              {filteredArticles.length === 0 ? (
+                <Card className="p-8 text-center">
+                  <p className="text-muted-foreground text-lg">
+                    No articles found in this category. Try selecting a different category.
+                  </p>
+                </Card>
+              ) : (
+                <div className="grid md:grid-cols-2 gap-8">
+                  {filteredArticles.map((article, index) => (
+                    <Card key={index} className="p-6 hover:shadow-lg transition-shadow flex flex-col">
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="text-xs font-semibold text-secondary bg-secondary/10 px-3 py-1 rounded-full">
+                          {article.category}
+                        </span>
+                        <span className="text-xs text-muted-foreground">{article.readTime}</span>
+                      </div>
+                      <h3 className="text-xl font-bold text-foreground mb-3">{article.title}</h3>
+                      <p className="text-muted-foreground mb-4 flex-grow">{article.description}</p>
+                      <Link 
+                        to={article.link} 
+                        className="flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all"
+                      >
+                        Read Article <ArrowRight className="w-4 h-4" />
+                      </Link>
+                    </Card>
+                  ))}
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-3">{article.title}</h3>
-                <p className="text-muted-foreground mb-4 flex-grow">{article.description}</p>
-                {article.link ? (
-                  <Link to={article.link} className="flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all">
-                    Read Article <ArrowRight className="w-4 h-4" />
-                  </Link>
-                ) : (
-                  <button className="flex items-center gap-2 text-primary font-medium hover:gap-3 transition-all">
-                    Read Article <ArrowRight className="w-4 h-4" />
-                  </button>
-                )}
-              </Card>
-            ))}
-              </div>
+              )}
             </div>
             <div className="lg:col-span-1">
               <div className="sticky top-24">
