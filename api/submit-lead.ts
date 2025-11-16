@@ -61,14 +61,47 @@ export default async function handler(
   let mongoClient: MongoClient | null = null;
 
   try {
-    const { name, email, phone, city, firstTimeBuyer, mostImportant, source = 'lead_form' } = request.body;
+    const { 
+      name, 
+      email, 
+      phone, 
+      city, 
+      firstTimeBuyer, 
+      mostImportant, 
+      source = 'lead_form',
+      // Quiz-specific fields
+      quizAnswers,
+      quizPrograms,
+      quizIsEligible,
+      quizEstimatedFlow,
+      contactMethod
+    } = request.body;
 
-    // Validate required fields
-    if (!name || !email || !phone || !city) {
-      return response.status(400).json({ 
-        error: 'Missing required fields',
-        required: ['name', 'email', 'phone', 'city']
-      });
+    // Validate required fields based on source
+    if (source === 'homeownership_quiz') {
+      // For quiz submissions, require contact info
+      if (!name || !email || !phone || !city) {
+        return response.status(400).json({ 
+          error: 'Missing required fields',
+          required: ['name', 'email', 'phone', 'city'],
+          message: 'Contact information is required to submit quiz results'
+        });
+      }
+      // Quiz answers are required for quiz submissions
+      if (!quizAnswers || typeof quizAnswers !== 'object') {
+        return response.status(400).json({ 
+          error: 'Missing quiz data',
+          required: ['quizAnswers']
+        });
+      }
+    } else {
+      // For regular lead forms, require standard fields
+      if (!name || !email || !phone || !city) {
+        return response.status(400).json({ 
+          error: 'Missing required fields',
+          required: ['name', 'email', 'phone', 'city']
+        });
+      }
     }
 
     // Get MongoDB client
@@ -77,7 +110,7 @@ export default async function handler(
     const collection = db.collection('leads');
 
     // Prepare document for insertion
-    const leadDocument = {
+    const leadDocument: any = {
       name,
       email,
       phone,
@@ -87,6 +120,15 @@ export default async function handler(
       source,
       created_at: new Date(),
     };
+
+    // Add quiz-specific data if this is a quiz submission
+    if (source === 'homeownership_quiz') {
+      leadDocument.quiz_answers = quizAnswers || {};
+      leadDocument.quiz_programs = Array.isArray(quizPrograms) ? quizPrograms : [];
+      leadDocument.quiz_is_eligible = quizIsEligible ?? null;
+      leadDocument.quiz_estimated_flow = quizEstimatedFlow ?? null;
+      leadDocument.contact_method = contactMethod || null;
+    }
 
     // Insert into MongoDB
     const result = await collection.insertOne(leadDocument);
@@ -99,23 +141,55 @@ export default async function handler(
     const resendClient = getResendClient();
     if (resendClient && process.env.NOTIFICATION_EMAIL) {
       try {
+        // Build email content based on source
+        let emailSubject = `New Lead Submission - ${name}`;
+        let emailHtml = `
+          <h2>New Lead Submission</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Phone:</strong> ${phone}</p>
+          <p><strong>City:</strong> ${city}</p>
+          <p><strong>First Time Buyer:</strong> ${firstTimeBuyer || 'Not specified'}</p>
+          <p><strong>Most Important:</strong> ${mostImportant || 'Not specified'}</p>
+          <p><strong>Source:</strong> ${source}</p>
+        `;
+
+        // Add quiz-specific information if this is a quiz submission
+        if (source === 'homeownership_quiz') {
+          emailSubject = `New Quiz Submission - ${name}`;
+          emailHtml += `
+            <hr>
+            <h3>Quiz Results</h3>
+            <p><strong>Contact Method Requested:</strong> ${contactMethod || 'Not specified'}</p>
+            <p><strong>Eligible:</strong> ${quizIsEligible ? 'Yes' : 'No'}</p>
+            <p><strong>Estimated Cash Flow:</strong> ${quizEstimatedFlow ? 'Strong' : 'Needs Review'}</p>
+            <p><strong>Recommended Programs:</strong></p>
+            <ul>
+              ${Array.isArray(quizPrograms) && quizPrograms.length > 0 
+                ? quizPrograms.map((program: string) => `<li>${program}</li>`).join('')
+                : '<li>None specified</li>'
+              }
+            </ul>
+            <p><strong>Quiz Answers:</strong></p>
+            <ul>
+              ${quizAnswers ? Object.entries(quizAnswers).map(([key, value]) => 
+                `<li><strong>${key}:</strong> ${value}</li>`
+              ).join('') : '<li>No answers provided</li>'}
+            </ul>
+          `;
+        }
+
+        emailHtml += `
+          <hr>
+          <p><strong>Submitted:</strong> ${new Date().toLocaleString()}</p>
+          <p><em>Lead ID: ${result.insertedId}</em></p>
+        `;
+
         await resendClient.emails.send({
           from: 'West Michigan Homebuyer Hub <noreply@resend.dev>',
           to: process.env.NOTIFICATION_EMAIL,
-          subject: `New Lead Submission - ${name}`,
-          html: `
-            <h2>New Lead Submission</h2>
-            <p><strong>Name:</strong> ${name}</p>
-            <p><strong>Email:</strong> ${email}</p>
-            <p><strong>Phone:</strong> ${phone}</p>
-            <p><strong>City:</strong> ${city}</p>
-            <p><strong>First Time Buyer:</strong> ${firstTimeBuyer || 'Not specified'}</p>
-            <p><strong>Most Important:</strong> ${mostImportant || 'Not specified'}</p>
-            <p><strong>Source:</strong> ${source}</p>
-            <p><strong>Submitted:</strong> ${new Date().toLocaleString()}</p>
-            <hr>
-            <p><em>Lead ID: ${result.insertedId}</em></p>
-          `,
+          subject: emailSubject,
+          html: emailHtml,
         });
       } catch (emailError) {
         // Log email error but don't fail the request

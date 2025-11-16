@@ -2,6 +2,15 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { CheckCircle, Phone, MessageSquare, Mail } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -18,6 +27,15 @@ type QuizAnswer = {
 const HomeownershipQuiz = () => {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<QuizAnswer>({});
+  const [showContactForm, setShowContactForm] = useState(false);
+  const [contactMethod, setContactMethod] = useState<string>("");
+  const [contactInfo, setContactInfo] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    city: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
   const totalSteps = 7;
@@ -73,10 +91,69 @@ const HomeownershipQuiz = () => {
   };
 
   const handleContact = (method: string) => {
-    toast({
-      title: "Request Received!",
-      description: `We'll reach out to you via ${method} shortly with your personalized options.`,
-    });
+    setContactMethod(method);
+    setShowContactForm(true);
+  };
+
+  const handleContactSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!contactInfo.name || !contactInfo.email || !contactInfo.phone || !contactInfo.city) {
+      toast({
+        title: "Please fill in all fields",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const results = calculateResults();
+      const response = await fetch('/api/submit-lead', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: contactInfo.name,
+          email: contactInfo.email,
+          phone: contactInfo.phone,
+          city: contactInfo.city,
+          source: 'homeownership_quiz',
+          quizAnswers: answers,
+          quizPrograms: results.programs,
+          quizIsEligible: results.isEligible,
+          quizEstimatedFlow: results.estimatedFlow,
+          contactMethod: contactMethod,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to submit');
+      }
+
+      toast({
+        title: "Thank you!",
+        description: `We'll reach out to you via ${contactMethod === 'phone' ? 'phone call' : contactMethod === 'text' ? 'text message' : 'email'} shortly with your personalized options.`,
+      });
+
+      // Reset form and close dialog
+      setShowContactForm(false);
+      setContactInfo({ name: "", email: "", phone: "", city: "" });
+      setContactMethod("");
+    } catch (error) {
+      console.error('Quiz submission error:', error);
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const results = step === totalSteps ? calculateResults() : null;
@@ -424,6 +501,86 @@ const HomeownershipQuiz = () => {
           </Button>
         </div>
       )}
+
+      {/* Contact Form Dialog */}
+      <Dialog open={showContactForm} onOpenChange={setShowContactForm}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-2xl text-center">
+              Get Your Personalized Options
+            </DialogTitle>
+            <DialogDescription className="text-center text-base pt-2">
+              We'll connect you with a local expert who can help you explore your best options.
+            </DialogDescription>
+          </DialogHeader>
+
+          <form onSubmit={handleContactSubmit} className="space-y-4 pt-4">
+            <div>
+              <Label htmlFor="quiz-name">Full Name *</Label>
+              <Input
+                id="quiz-name"
+                type="text"
+                required
+                value={contactInfo.name}
+                onChange={(e) => setContactInfo({ ...contactInfo, name: e.target.value })}
+                placeholder="John Smith"
+                className="mt-1"
+              />
+            </div>
+
+            <div>
+              <Label htmlFor="quiz-email">Email *</Label>
+              <Input
+                id="quiz-email"
+                type="email"
+                required
+                value={contactInfo.email}
+                onChange={(e) => setContactInfo({ ...contactInfo, email: e.target.value })}
+                placeholder="john@example.com"
+                className="mt-1"
+              />
+            </div>
+
+            <div>
+              <Label htmlFor="quiz-phone">Phone *</Label>
+              <Input
+                id="quiz-phone"
+                type="tel"
+                required
+                value={contactInfo.phone}
+                onChange={(e) => setContactInfo({ ...contactInfo, phone: e.target.value })}
+                placeholder="(616) 555-1234"
+                className="mt-1"
+              />
+            </div>
+
+            <div>
+              <Label htmlFor="quiz-city">City *</Label>
+              <Input
+                id="quiz-city"
+                type="text"
+                required
+                value={contactInfo.city}
+                onChange={(e) => setContactInfo({ ...contactInfo, city: e.target.value })}
+                placeholder="Grand Rapids"
+                className="mt-1"
+              />
+            </div>
+
+            <Button 
+              type="submit" 
+              className="w-full bg-accent hover:bg-accent/90 text-lg py-6"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Submitting...' : 'Submit & Get Connected'}
+            </Button>
+
+            <p className="text-xs text-muted-foreground text-center">
+              Your information is secure and only shared with verified local lenders.
+            </p>
+          </form>
+        </DialogContent>
+      </Dialog>
     </Card>
   );
 };
