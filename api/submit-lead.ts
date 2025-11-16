@@ -7,10 +7,15 @@ let cachedClient: MongoClient | null = null;
 let resend: Resend | null = null;
 
 async function getMongoClient(): Promise<MongoClient> {
-  const mongoUri = process.env.MONGODB_URI;
+  const mongoUri = process.env.MONGODB_URI?.trim();
   
   if (!mongoUri) {
     throw new Error('Missing MONGODB_URI environment variable. Please set it in Vercel environment variables.');
+  }
+
+  // Validate connection string format
+  if (!mongoUri.startsWith('mongodb://') && !mongoUri.startsWith('mongodb+srv://')) {
+    throw new Error(`Invalid MONGODB_URI format. Connection string must start with "mongodb://" or "mongodb+srv://". Received: ${mongoUri.substring(0, 20)}...`);
   }
 
   // Reuse existing connection if available
