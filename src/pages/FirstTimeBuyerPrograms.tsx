@@ -5,6 +5,9 @@ import Footer from "@/components/Footer";
 import LeadForm from "@/components/LeadForm";
 import { Card } from "@/components/ui/card";
 import { CheckCircle, Home, DollarSign, GraduationCap, FileText, ChevronRight } from "lucide-react";
+import { ArticleSchema, BreadcrumbSchema } from "@/components/StructuredData";
+
+const SITE_URL = "https://westmichigan-homehub.com";
 
 const FirstTimeBuyerPrograms = () => {
   const programs = [
@@ -60,8 +63,23 @@ const FirstTimeBuyerPrograms = () => {
           name="description" 
           content="Discover the best first-time homebuyer programs for West Michigan residents. Learn about low-down and zero-down loans, eligibility, and how you can buy your first home with trusted local lenders." 
         />
+        <link rel="canonical" href={`${SITE_URL}/first-time-homebuyer-programs-west-michigan`} />
+        <meta property="og:title" content="First-Time Homebuyer Programs in West Michigan | Low & Zero-Down Loans" />
+        <meta property="og:description" content="Discover the best first-time homebuyer programs for West Michigan residents. Learn about low-down and zero-down loans, eligibility, and how you can buy your first home." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${SITE_URL}/first-time-homebuyer-programs-west-michigan`} />
+        <meta property="og:image" content={`${SITE_URL}/og-image-first-time-buyer-programs.jpg`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="First-Time Homebuyer Programs in West Michigan" />
+        <meta name="twitter:description" content="Discover the best first-time homebuyer programs for West Michigan residents." />
+        <meta name="twitter:image" content={`${SITE_URL}/og-image-first-time-buyer-programs.jpg`} />
       </Helmet>
-
+      <ArticleSchema 
+        title="First-Time Homebuyer Programs in West Michigan | Low & Zero-Down Loans"
+        description="Discover the best first-time homebuyer programs for West Michigan residents. Learn about low-down and zero-down loans, eligibility, and how you can buy your first home."
+        url="/first-time-homebuyer-programs-west-michigan"
+      />
+      <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: "First-Time Buyer Programs", url: "/first-time-homebuyer-programs-west-michigan" }]} />
       <Navigation />
       
       {/* Breadcrumbs */}

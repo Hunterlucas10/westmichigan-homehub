@@ -18,26 +18,16 @@ type QuizAnswer = {
 const HomeownershipQuiz = () => {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<QuizAnswer>({});
-  const [showMessage, setShowMessage] = useState(false);
-  const [currentMessage, setCurrentMessage] = useState("");
   const { toast } = useToast();
 
   const totalSteps = 7;
   const progress = (step / totalSteps) * 100;
 
-  const handleAnswer = (questionKey: keyof QuizAnswer, value: string, message: string) => {
+  const handleAnswer = (questionKey: keyof QuizAnswer, value: string) => {
     setAnswers({ ...answers, [questionKey]: value });
-    setCurrentMessage(message);
-    setShowMessage(true);
-    
-    setTimeout(() => {
-      setShowMessage(false);
-      setTimeout(() => {
-        if (step < totalSteps) {
-          setStep(step + 1);
-        }
-      }, 400);
-    }, 2500);
+    if (step < totalSteps) {
+      setStep(step + 1);
+    }
   };
 
   const calculateResults = () => {
@@ -123,15 +113,7 @@ const HomeownershipQuiz = () => {
             <Progress value={progress} />
           </div>
 
-          {showMessage ? (
-            <div className="animate-in fade-in slide-in-from-top-2 duration-300 bg-secondary/20 border border-secondary p-4 rounded-lg">
-              <p className="text-foreground flex items-start gap-2">
-                <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
-                {currentMessage}
-              </p>
-            </div>
-          ) : (
-            <div className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-500">
+          <div className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-500">
               {step === 1 && (
                 <>
                   <h4 className="text-xl font-semibold text-foreground">
@@ -140,22 +122,22 @@ const HomeownershipQuiz = () => {
                   <div className="space-y-3">
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
-                      onClick={() => handleAnswer("question1", "alone", "Nice! Many buyers qualify solo — let's see what works for you!")}
+                      className="w-full justify-start h-auto py-4 text-foreground hover:text-foreground hover:font-bold hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
+                      onClick={() => handleAnswer("question1", "alone")}
                     >
                       🙋 Just me
                     </Button>
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
-                      onClick={() => handleAnswer("question1", "co-borrower", "Nice! Having a co-borrower can often boost your approval odds — but many buyers qualify solo, too!")}
+                      className="w-full justify-start h-auto py-4 text-foreground hover:text-foreground hover:font-bold hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
+                      onClick={() => handleAnswer("question1", "co-borrower")}
                     >
                       👫 With a spouse or co-borrower
                     </Button>
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
-                      onClick={() => handleAnswer("question1", "not-sure", "No problem! We can explore options for both scenarios.")}
+                      className="w-full justify-start h-auto py-4 text-foreground hover:text-foreground hover:font-bold hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
+                      onClick={() => handleAnswer("question1", "not-sure")}
                     >
                       🤔 Not sure yet
                     </Button>
@@ -171,15 +153,15 @@ const HomeownershipQuiz = () => {
                   <div className="space-y-3">
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
-                      onClick={() => handleAnswer("question2", "yes", "Awesome! You may qualify for a VA Loan — 0% down and no mortgage insurance!")}
+                      className="w-full justify-start h-auto py-4 text-foreground hover:text-foreground hover:font-bold hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
+                      onClick={() => handleAnswer("question2", "yes")}
                     >
                       🎖️ Yes
                     </Button>
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
-                      onClick={() => handleAnswer("question2", "no", "No worries! There are plenty of low and zero down programs beyond VA options.")}
+                      className="w-full justify-start h-auto py-4 text-foreground hover:text-foreground hover:font-bold hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
+                      onClick={() => handleAnswer("question2", "no")}
                     >
                       👤 No
                     </Button>
@@ -195,15 +177,15 @@ const HomeownershipQuiz = () => {
                   <div className="space-y-3">
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
-                      onClick={() => handleAnswer("question3", "yes", "Great! Did you know some first-time buyer programs can still benefit repeat buyers?")}
+                      className="w-full justify-start h-auto py-4 text-foreground hover:text-foreground hover:font-bold hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
+                      onClick={() => handleAnswer("question3", "yes")}
                     >
                       🏘️ Yes
                     </Button>
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
-                      onClick={() => handleAnswer("question3", "no", "Perfect — Michigan has several grants just for first-time buyers!")}
+                      className="w-full justify-start h-auto py-4 text-foreground hover:text-foreground hover:font-bold hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
+                      onClick={() => handleAnswer("question3", "no")}
                     >
                       ✨ No
                     </Button>
@@ -219,29 +201,29 @@ const HomeownershipQuiz = () => {
                   <div className="space-y-3">
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
-                      onClick={() => handleAnswer("question4", "under50", "Got it! Most Michigan programs are income-based, so your range helps us match you with the right fit.")}
+                      className="w-full justify-start h-auto py-4 text-foreground hover:text-foreground hover:font-bold hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
+                      onClick={() => handleAnswer("question4", "under50")}
                     >
                       💵 Under $50,000
                     </Button>
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
-                      onClick={() => handleAnswer("question4", "50-80", "Got it! Most Michigan programs are income-based, so your range helps us match you with the right fit.")}
+                      className="w-full justify-start h-auto py-4 text-foreground hover:text-foreground hover:font-bold hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
+                      onClick={() => handleAnswer("question4", "50-80")}
                     >
                       💰 $50,000–$80,000
                     </Button>
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
-                      onClick={() => handleAnswer("question4", "80-120", "Got it! Most Michigan programs are income-based, so your range helps us match you with the right fit.")}
+                      className="w-full justify-start h-auto py-4 text-foreground hover:text-foreground hover:font-bold hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
+                      onClick={() => handleAnswer("question4", "80-120")}
                     >
                       💸 $80,000–$120,000
                     </Button>
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
-                      onClick={() => handleAnswer("question4", "over120", "Got it! Most Michigan programs are income-based, so your range helps us match you with the right fit.")}
+                      className="w-full justify-start h-auto py-4 text-foreground hover:text-foreground hover:font-bold hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
+                      onClick={() => handleAnswer("question4", "over120")}
                     >
                       🤑 Over $120,000
                     </Button>
@@ -257,29 +239,29 @@ const HomeownershipQuiz = () => {
                   <div className="space-y-3">
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
-                      onClick={() => handleAnswer("question5", "under500", "Thanks! We'll use this to estimate your cash flow and see which programs could fit best.")}
+                      className="w-full justify-start h-auto py-4 text-foreground hover:text-foreground hover:font-bold hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
+                      onClick={() => handleAnswer("question5", "under500")}
                     >
                       📉 Under $500
                     </Button>
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
-                      onClick={() => handleAnswer("question5", "500-1000", "Thanks! We'll use this to estimate your cash flow and see which programs could fit best.")}
+                      className="w-full justify-start h-auto py-4 text-foreground hover:text-foreground hover:font-bold hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
+                      onClick={() => handleAnswer("question5", "500-1000")}
                     >
                       📊 $500–$1,000
                     </Button>
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
-                      onClick={() => handleAnswer("question5", "1000-2000", "Thanks! We'll use this to estimate your cash flow and see which programs could fit best.")}
+                      className="w-full justify-start h-auto py-4 text-foreground hover:text-foreground hover:font-bold hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
+                      onClick={() => handleAnswer("question5", "1000-2000")}
                     >
                       📈 $1,000–$2,000
                     </Button>
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
-                      onClick={() => handleAnswer("question5", "over2000", "Thanks! We'll use this to estimate your cash flow and see which programs could fit best.")}
+                      className="w-full justify-start h-auto py-4 text-foreground hover:text-foreground hover:font-bold hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
+                      onClick={() => handleAnswer("question5", "over2000")}
                     >
                       💳 Over $2,000
                     </Button>
@@ -295,29 +277,29 @@ const HomeownershipQuiz = () => {
                   <div className="space-y-3">
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
-                      onClick={() => handleAnswer("question6", "excellent", "Fantastic! You'll likely have multiple loan and assistance options.")}
+                      className="w-full justify-start h-auto py-4 text-foreground hover:text-foreground hover:font-bold hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
+                      onClick={() => handleAnswer("question6", "excellent")}
                     >
                       ⭐ Excellent (740+)
                     </Button>
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
-                      onClick={() => handleAnswer("question6", "good", "Nice! You're in great shape for several popular loan programs.")}
+                      className="w-full justify-start h-auto py-4 text-foreground hover:text-foreground hover:font-bold hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
+                      onClick={() => handleAnswer("question6", "good")}
                     >
                       👍 Good (680–739)
                     </Button>
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
-                      onClick={() => handleAnswer("question6", "fair", "You're close! Some lenders and programs are flexible with credit scores.")}
+                      className="w-full justify-start h-auto py-4 text-foreground hover:text-foreground hover:font-bold hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
+                      onClick={() => handleAnswer("question6", "fair")}
                     >
                       👌 Fair (620–679)
                     </Button>
                     <Button
                       variant="outline"
-                      className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
-                      onClick={() => handleAnswer("question6", "needs-improvement", "That's okay — homeownership can still be on the horizon. We'll show programs designed to help you get ready.")}
+                      className="w-full justify-start h-auto py-4 text-foreground hover:text-foreground hover:font-bold hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
+                      onClick={() => handleAnswer("question6", "needs-improvement")}
                     >
                       💪 Needs improvement (below 620)
                     </Button>
@@ -342,8 +324,8 @@ const HomeownershipQuiz = () => {
                       <Button
                         key={location.name}
                         variant="outline"
-                        className="w-full justify-start h-auto py-4 hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
-                        onClick={() => handleAnswer("question7", location.name.toLowerCase(), "Perfect! There are local grants and programs specific to your area — let's check your options.")}
+                        className="w-full justify-start h-auto py-4 text-foreground hover:text-foreground hover:font-bold hover:bg-secondary/10 hover:border-secondary transition-all hover:scale-105"
+                        onClick={() => handleAnswer("question7", location.name.toLowerCase())}
                       >
                         {location.emoji} {location.name}
                       </Button>
@@ -352,7 +334,6 @@ const HomeownershipQuiz = () => {
                 </>
               )}
             </div>
-          )}
         </div>
       )}
 
@@ -437,7 +418,6 @@ const HomeownershipQuiz = () => {
             onClick={() => {
               setStep(0);
               setAnswers({});
-              setShowMessage(false);
             }}
           >
             Start Over

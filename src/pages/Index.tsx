@@ -1,12 +1,21 @@
+import { Helmet } from "react-helmet";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import LeadForm from "@/components/LeadForm";
 import HomeownershipQuiz from "@/components/HomeownershipQuiz";
+import SocialProofStats from "@/components/SocialProofStats";
+import Testimonials from "@/components/Testimonials";
+import FAQ from "@/components/FAQ";
+import TrustBadges from "@/components/TrustBadges";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Home, DollarSign, GraduationCap, Shield, CheckCircle, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-home.jpg";
+import { OrganizationSchema, BreadcrumbSchema } from "@/components/StructuredData";
+
+const SITE_URL = "https://westmichigan-homehub.com";
+
 const Index = () => {
   const benefits = [{
     icon: DollarSign,
@@ -45,7 +54,7 @@ const Index = () => {
       downPayment: "Down payment assistance available",
       description: "Michigan's best-kept secret! MSHDA offers down payment assistance and lower mortgage rates to qualified first-time buyers.",
       highlights: [
-        "Up to $7,500 in down payment help",
+        "Up to $10,000 in down payment help",
         "Below-market interest rates",
         "Income limits apply (generous for West MI)",
       ],
@@ -76,6 +85,25 @@ const Index = () => {
   
   const programs = ["FHA Loans - 3.5% down payment", "VA Loans - Zero down for veterans", "USDA Loans - Zero down in eligible areas", "MSHDA MI Home Loan - Down payment assistance", "Conventional 97 - Just 3% down", "HomeReady & Home Possible - Special first-time buyer options"];
   return <div className="min-h-screen flex flex-col">
+      <Helmet>
+        <title>Get Matched to the Best Lender for Your Situation in West Michigan</title>
+        <meta 
+          name="description" 
+          content="Get matched to the best lender for your situation in West Michigan. At no cost, no BS. We connect you with the lender best suited to help your needs in your area." 
+        />
+        <link rel="canonical" href={`${SITE_URL}/`} />
+        <meta property="og:title" content="West Michigan Homebuyer Hub - Zero Down & First-Time Buyer Programs" />
+        <meta property="og:description" content="Your path to homeownership in West Michigan starts here. Explore FHA, VA, USDA, and MSHDA loan programs with trusted local experts." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${SITE_URL}/`} />
+        <meta property="og:image" content={`${SITE_URL}/og-image-home.jpg`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="West Michigan Homebuyer Hub - Zero Down & First-Time Buyer Programs" />
+        <meta name="twitter:description" content="Your path to homeownership in West Michigan starts here. Explore FHA, VA, USDA, and MSHDA loan programs with trusted local experts." />
+        <meta name="twitter:image" content={`${SITE_URL}/og-image-home.jpg`} />
+      </Helmet>
+      <OrganizationSchema />
+      <BreadcrumbSchema items={[{ name: "Home", url: "/" }]} />
       <Navigation />
       
       {/* Hero Section */}
@@ -87,11 +115,22 @@ const Index = () => {
             {/* Left Column - Content */}
             <div className="text-background">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Your Path to Homeownership in West Michigan Starts Here
+                Get Matched to the Best Lender for Your Situation in West Michigan
               </h1>
-              <p className="text-xl md:text-2xl mb-8 text-background/90">
-                Explore zero down, low down, and first-time homebuyer loan programs with trusted local experts.
+              <p className="text-xl md:text-2xl mb-4 text-background/90">
+                We connect you with the lender best suited to help your needs in your area. At no cost. No BS. Just the right match for you and your family.
               </p>
+              <div className="flex flex-wrap items-center gap-4 mb-8 text-sm text-background/80">
+                <span className="flex items-center gap-1">
+                  <span className="text-green-300">✓</span> No Cost
+                </span>
+                <span className="flex items-center gap-1">
+                  <span className="text-green-300">✓</span> No BS
+                </span>
+                <span className="flex items-center gap-1">
+                  <span className="text-green-300">✓</span> Best Match for You
+                </span>
+              </div>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button asChild size="lg" className="bg-accent hover:bg-accent/90 text-lg px-8">
                   <a href="#lead-form">Get In Touch with a Local Lender</a>
@@ -109,6 +148,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Social Proof Stats */}
+      <SocialProofStats />
 
       {/* First-Time Buyer Programs Section */}
       <section className="py-16 px-4 bg-muted">
@@ -176,6 +218,9 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <Testimonials />
+
       {/* Programs Section */}
       <section className="py-20 px-4 bg-background">
         <div className="container mx-auto">
@@ -207,10 +252,16 @@ const Index = () => {
                 and guide you through every step of the homebuying process.
               </p>
               <LeadForm variant="sidebar" />
+              <div className="mt-6">
+                <TrustBadges variant="compact" />
+              </div>
             </Card>
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FAQ />
 
       {/* CTA Section */}
       <section className="py-20 px-4 bg-gradient-to-r from-primary to-secondary text-primary-foreground">

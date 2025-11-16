@@ -1,8 +1,15 @@
+import { Helmet } from "react-helmet";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SocialProofStats from "@/components/SocialProofStats";
+import SuccessStories from "@/components/SuccessStories";
+import TrustBadges from "@/components/TrustBadges";
 import { Card } from "@/components/ui/card";
 import { Heart, Users, Target, Award } from "lucide-react";
 import aboutImage from "@/assets/about-team.jpg";
+import { BreadcrumbSchema } from "@/components/StructuredData";
+
+const SITE_URL = "https://westmichigan-homehub.com";
 
 const About = () => {
   const values = [
@@ -30,6 +37,24 @@ const About = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <Helmet>
+        <title>About Us - West Michigan Homebuyer Hub | Trusted Local Lenders</title>
+        <meta 
+          name="description" 
+          content="Learn about West Michigan Homebuyer Hub. We connect aspiring homeowners with verified local lenders specializing in zero down, low down payment, and first-time buyer programs in Grand Rapids and West Michigan." 
+        />
+        <link rel="canonical" href={`${SITE_URL}/about`} />
+        <meta property="og:title" content="About Us - West Michigan Homebuyer Hub | Trusted Local Lenders" />
+        <meta property="og:description" content="Learn about West Michigan Homebuyer Hub. We connect aspiring homeowners with verified local lenders specializing in affordable loan programs." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${SITE_URL}/about`} />
+        <meta property="og:image" content={`${SITE_URL}/og-image-about.jpg`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About Us - West Michigan Homebuyer Hub" />
+        <meta name="twitter:description" content="Learn about West Michigan Homebuyer Hub. We connect aspiring homeowners with verified local lenders." />
+        <meta name="twitter:image" content={`${SITE_URL}/og-image-about.jpg`} />
+      </Helmet>
+      <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: "About", url: "/about" }]} />
       <Navigation />
       
       {/* Hero Section */}
@@ -80,6 +105,9 @@ const About = () => {
           </div>
         </div>
       </section>
+
+      {/* Social Proof Stats */}
+      <SocialProofStats />
 
       {/* Values Section */}
       <section className="py-16 px-4 bg-muted">
@@ -144,6 +172,22 @@ const About = () => {
               and committed to helping you find the best financing solution for your unique situation.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* Success Stories Section */}
+      <SuccessStories />
+
+      {/* Trust Badges Section */}
+      <section className="py-16 px-4 bg-muted">
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-foreground mb-4">Why You Can Trust Us</h2>
+            <p className="text-lg text-muted-foreground">
+              We're committed to transparency, security, and your success
+            </p>
+          </div>
+          <TrustBadges />
         </div>
       </section>
 

@@ -1,8 +1,13 @@
+import { Helmet } from "react-helmet";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import LeadForm from "@/components/LeadForm";
 import { Card } from "@/components/ui/card";
 import { BookOpen, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { BreadcrumbSchema } from "@/components/StructuredData";
+
+const SITE_URL = "https://westmichigan-homehub.com";
 
 const LearningCenter = () => {
   const articles = [
@@ -25,24 +30,28 @@ const LearningCenter = () => {
       description: "Your credit isn't perfect? No problem. Learn which loan programs are available and how to improve your chances of approval.",
       category: "Credit & Finances",
       readTime: "7 min read",
+      link: "/blog/low-credit-score-home-buying",
     },
     {
       title: "Down Payment Assistance Programs in Grand Rapids",
       description: "Discover local and state programs that can help you cover your down payment and closing costs.",
       category: "Down Payment Help",
       readTime: "6 min read",
+      link: "/blog/down-payment-assistance-grand-rapids",
     },
     {
       title: "FHA Loans Explained: Is 3.5% Down Right for You?",
       description: "Everything you need to know about FHA loans, including benefits, requirements, and how they compare to conventional mortgages.",
       category: "Loan Programs",
       readTime: "9 min read",
+      link: "/blog/fha-loans-explained",
     },
     {
       title: "The Complete Home Buying Process: Step by Step",
       description: "From pre-approval to closing day, understand every step of the homebuying journey in West Michigan.",
       category: "Buying Process",
       readTime: "12 min read",
+      link: "/blog/home-buying-process-step-by-step",
     },
     {
       title: "VA Loans for Veterans: Zero Down in West Michigan",
@@ -55,6 +64,7 @@ const LearningCenter = () => {
       description: "Discover how MSHDA's programs can help you get down payment assistance and lower interest rates.",
       category: "Down Payment Help",
       readTime: "7 min read",
+      link: "/blog/mshda-mi-home-loan-guide",
     },
   ];
 
@@ -69,6 +79,24 @@ const LearningCenter = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <Helmet>
+        <title>Learning Center - Homebuyer Guides & Resources | West Michigan</title>
+        <meta 
+          name="description" 
+          content="Comprehensive guides on homebuying in West Michigan. Learn about loan programs, first-time buyer programs, down payment assistance, credit requirements, and the homebuying process." 
+        />
+        <link rel="canonical" href={`${SITE_URL}/learning-center`} />
+        <meta property="og:title" content="Learning Center - Homebuyer Guides & Resources | West Michigan" />
+        <meta property="og:description" content="Comprehensive guides on homebuying in West Michigan. Learn about loan programs, down payment assistance, and the homebuying process." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${SITE_URL}/learning-center`} />
+        <meta property="og:image" content={`${SITE_URL}/og-image-learning-center.jpg`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Learning Center - Homebuyer Guides & Resources" />
+        <meta name="twitter:description" content="Comprehensive guides on homebuying in West Michigan. Learn about loan programs and the homebuying process." />
+        <meta name="twitter:image" content={`${SITE_URL}/og-image-learning-center.jpg`} />
+      </Helmet>
+      <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: "Learning Center", url: "/learning-center" }]} />
       <Navigation />
       
       {/* Hero Section */}
@@ -109,7 +137,9 @@ const LearningCenter = () => {
       {/* Articles Grid */}
       <section className="py-16 px-4">
         <div className="container mx-auto">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-8">
+            <div className="lg:col-span-2">
+              <div className="grid md:grid-cols-2 gap-8">
             {articles.map((article, index) => (
               <Card key={index} className="p-6 hover:shadow-lg transition-shadow flex flex-col">
                 <div className="flex items-center gap-2 mb-3">
@@ -131,6 +161,13 @@ const LearningCenter = () => {
                 )}
               </Card>
             ))}
+              </div>
+            </div>
+            <div className="lg:col-span-1">
+              <div className="sticky top-24">
+                <LeadForm variant="sidebar" />
+              </div>
+            </div>
           </div>
         </div>
       </section>

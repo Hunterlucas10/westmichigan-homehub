@@ -5,6 +5,9 @@ import Footer from "@/components/Footer";
 import LeadForm from "@/components/LeadForm";
 import { Card } from "@/components/ui/card";
 import { CheckCircle, DollarSign, GraduationCap, FileText, Users, ChevronRight } from "lucide-react";
+import { ArticleSchema, BreadcrumbSchema } from "@/components/StructuredData";
+
+const SITE_URL = "https://westmichigan-homehub.com";
 
 const FirstGenerationHomebuyerGrant = () => {
   const eligibilityRequirements = [
@@ -69,8 +72,23 @@ const FirstGenerationHomebuyerGrant = () => {
           name="description" 
           content="New Michigan homebuyer grants offer up to $25,000 for first-generation or first-time buyers. See if you qualify and how to apply in West Michigan." 
         />
+        <link rel="canonical" href={`${SITE_URL}/first-generation-homebuyer-grant-michigan`} />
+        <meta property="og:title" content="Michigan First-Generation Homebuyer Grant | $25,000 in Assistance Available" />
+        <meta property="og:description" content="New Michigan homebuyer grants offer up to $25,000 for first-generation or first-time buyers. See if you qualify." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${SITE_URL}/first-generation-homebuyer-grant-michigan`} />
+        <meta property="og:image" content={`${SITE_URL}/og-image-first-generation-grant.jpg`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Michigan First-Generation Homebuyer Grant" />
+        <meta name="twitter:description" content="New Michigan homebuyer grants offer up to $25,000 for first-generation or first-time buyers." />
+        <meta name="twitter:image" content={`${SITE_URL}/og-image-first-generation-grant.jpg`} />
       </Helmet>
-
+      <ArticleSchema 
+        title="Michigan First-Generation Homebuyer Grant | $25,000 in Assistance Available"
+        description="New Michigan homebuyer grants offer up to $25,000 for first-generation or first-time buyers. See if you qualify and how to apply in West Michigan."
+        url="/first-generation-homebuyer-grant-michigan"
+      />
+      <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: "First Generation Homebuyer Grant", url: "/first-generation-homebuyer-grant-michigan" }]} />
       <Navigation />
       
       {/* Breadcrumbs */}

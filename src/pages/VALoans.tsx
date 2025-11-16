@@ -1,9 +1,13 @@
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import LeadForm from "@/components/LeadForm";
 import { Card } from "@/components/ui/card";
 import { CheckCircle, Shield, DollarSign, Home } from "lucide-react";
+import { ArticleSchema, BreadcrumbSchema } from "@/components/StructuredData";
+
+const SITE_URL = "https://westmichigan-homehub.com";
 
 const VALoans = () => {
   const benefits = [
@@ -38,6 +42,29 @@ const VALoans = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <Helmet>
+        <title>VA Loans in West Michigan | Zero Down Payment for Veterans</title>
+        <meta 
+          name="description" 
+          content="VA loans offer zero down payment, no PMI, and competitive rates for veterans and active military in West Michigan. Learn about eligibility, benefits, and how to apply for a VA loan in Grand Rapids." 
+        />
+        <link rel="canonical" href={`${SITE_URL}/va-loans`} />
+        <meta property="og:title" content="VA Loans in West Michigan | Zero Down Payment for Veterans" />
+        <meta property="og:description" content="VA loans offer zero down payment, no PMI, and competitive rates for veterans and active military in West Michigan." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${SITE_URL}/va-loans`} />
+        <meta property="og:image" content={`${SITE_URL}/og-image-va-loans.jpg`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="VA Loans in West Michigan | Zero Down Payment for Veterans" />
+        <meta name="twitter:description" content="VA loans offer zero down payment, no PMI, and competitive rates for veterans and active military." />
+        <meta name="twitter:image" content={`${SITE_URL}/og-image-va-loans.jpg`} />
+      </Helmet>
+      <ArticleSchema 
+        title="VA Loans in West Michigan | Zero Down Payment for Veterans"
+        description="VA loans offer zero down payment, no PMI, and competitive rates for veterans and active military in West Michigan."
+        url="/va-loans"
+      />
+      <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: "VA Loans", url: "/va-loans" }]} />
       <Navigation />
       
       {/* Hero Section */}

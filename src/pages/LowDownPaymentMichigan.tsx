@@ -5,6 +5,9 @@ import Footer from "@/components/Footer";
 import LeadForm from "@/components/LeadForm";
 import { Card } from "@/components/ui/card";
 import { CheckCircle, Home, DollarSign, FileText, ChevronRight } from "lucide-react";
+import { ArticleSchema, BreadcrumbSchema } from "@/components/StructuredData";
+
+const SITE_URL = "https://westmichigan-homehub.com";
 
 const LowDownPaymentMichigan = () => {
   const programs = [
@@ -72,8 +75,23 @@ const LowDownPaymentMichigan = () => {
           name="description" 
           content="Explore Michigan's best low-down-payment home loans. Compare FHA, Conventional 3%, and MSHDA DPA programs to find the most affordable path to homeownership." 
         />
+        <link rel="canonical" href={`${SITE_URL}/low-down-payment-michigan`} />
+        <meta property="og:title" content="Low Down Payment Mortgages in Michigan | FHA, Conventional & MSHDA Loans" />
+        <meta property="og:description" content="Explore Michigan's best low-down-payment home loans. Compare FHA, Conventional 3%, and MSHDA DPA programs." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${SITE_URL}/low-down-payment-michigan`} />
+        <meta property="og:image" content={`${SITE_URL}/og-image-low-down-payment.jpg`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Low Down Payment Mortgages in Michigan" />
+        <meta name="twitter:description" content="Explore Michigan's best low-down-payment home loans." />
+        <meta name="twitter:image" content={`${SITE_URL}/og-image-low-down-payment.jpg`} />
       </Helmet>
-
+      <ArticleSchema 
+        title="Low Down Payment Mortgages in Michigan | FHA, Conventional & MSHDA Loans"
+        description="Explore Michigan's best low-down-payment home loans. Compare FHA, Conventional 3%, and MSHDA DPA programs to find the most affordable path to homeownership."
+        url="/low-down-payment-michigan"
+      />
+      <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: "Low Down Payment Michigan", url: "/low-down-payment-michigan" }]} />
       <Navigation />
       
       {/* Breadcrumbs */}

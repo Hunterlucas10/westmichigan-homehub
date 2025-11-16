@@ -17,6 +17,7 @@ const LeadForm = ({ variant = "hero" }: LeadFormProps) => {
     phone: "",
     city: "",
     firstTimeBuyer: "",
+    mostImportant: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -37,6 +38,7 @@ const LeadForm = ({ variant = "hero" }: LeadFormProps) => {
       phone: "",
       city: "",
       firstTimeBuyer: "",
+      mostImportant: "",
     });
   };
 
@@ -124,13 +126,52 @@ const LeadForm = ({ variant = "hero" }: LeadFormProps) => {
           </Select>
         </div>
 
+        <div>
+          <Label htmlFor="mostImportant">What is most important to your home buying?</Label>
+          <Select value={formData.mostImportant} onValueChange={(value) => handleChange("mostImportant", value)}>
+            <SelectTrigger className="mt-1">
+              <SelectValue placeholder="Select an option" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="lowest-rate">Lowest rate</SelectItem>
+              <SelectItem value="lowest-down-payment">Lowest down payment</SelectItem>
+              <SelectItem value="established-lender">Established lender</SelectItem>
+              <SelectItem value="time-to-close">Time to close</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
         <Button type="submit" className="w-full bg-accent hover:bg-accent/90 text-lg py-6">
           Check My Eligibility
         </Button>
 
-        <p className="text-xs text-muted-foreground text-center">
-          Your information is secure and only shared with verified local lenders.
-        </p>
+        <div className="space-y-3 pt-2">
+          <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+            <span className="font-semibold text-foreground">Average response time:</span>
+            <span>2 hours</span>
+          </div>
+          <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+            <span>Join</span>
+            <span className="font-semibold text-foreground">1,500+ happy homeowners</span>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground pt-2 border-t border-border">
+            <span className="flex items-center gap-1">
+              <span className="text-green-600">✓</span> Free Consultation
+            </span>
+            <span className="flex items-center gap-1">
+              <span className="text-green-600">✓</span> No Obligation
+            </span>
+            <span className="flex items-center gap-1">
+              <span className="text-green-600">✓</span> 100% Secure
+            </span>
+            <span className="flex items-center gap-1">
+              <span className="text-green-600">✓</span> We Never Sell Your Info
+            </span>
+          </div>
+          <p className="text-xs text-muted-foreground text-center">
+            Your information is secure and only shared with verified local lenders.
+          </p>
+        </div>
       </div>
     </form>
   );

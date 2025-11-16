@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, Home } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,7 +8,9 @@ const Navigation = () => {
   const navItems = [
     { name: "VA Loans", path: "/va-loans" },
     { name: "First Time Home Buyer", path: "/first-time-buyer" },
+    { name: "MSHDA Info Center", path: "/mshda-info-center" },
     { name: "Learning Center", path: "/learning-center" },
+    { name: "West Michigan Living", path: "/west-michigan-living" },
   ];
 
   return (
@@ -23,19 +24,17 @@ const Navigation = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-2">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className="text-foreground hover:text-secondary transition-colors font-medium"
+                className="px-4 py-2 rounded-lg text-foreground hover:text-secondary hover:bg-muted transition-all font-medium text-sm relative group"
               >
                 {item.name}
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-secondary scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
               </Link>
             ))}
-            <Button asChild variant="default" className="bg-accent hover:bg-accent/90">
-              <Link to="/contact">Buy Your Home</Link>
-            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -61,11 +60,6 @@ const Navigation = () => {
                 {item.name}
               </Link>
             ))}
-            <Button asChild variant="default" className="w-full mt-4 bg-accent hover:bg-accent/90">
-              <Link to="/contact" onClick={() => setIsOpen(false)}>
-                Buy Your Home
-              </Link>
-            </Button>
           </div>
         )}
       </div>

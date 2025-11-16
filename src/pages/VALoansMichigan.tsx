@@ -5,6 +5,9 @@ import Footer from "@/components/Footer";
 import LeadForm from "@/components/LeadForm";
 import { Card } from "@/components/ui/card";
 import { CheckCircle, Shield, Award, DollarSign, Home, ChevronRight } from "lucide-react";
+import { ArticleSchema, BreadcrumbSchema } from "@/components/StructuredData";
+
+const SITE_URL = "https://westmichigan-homehub.com";
 
 const VALoansMichigan = () => {
   const benefits = [
@@ -76,8 +79,23 @@ const VALoansMichigan = () => {
           name="description" 
           content="Veterans and active-duty service members can buy a home in West Michigan with no money down. Learn how VA loans work and how to apply locally." 
         />
+        <link rel="canonical" href={`${SITE_URL}/va-loans-michigan`} />
+        <meta property="og:title" content="VA Loans Michigan | Zero-Down Mortgage for Veterans in West Michigan" />
+        <meta property="og:description" content="Veterans and active-duty service members can buy a home in West Michigan with no money down. Learn how VA loans work." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${SITE_URL}/va-loans-michigan`} />
+        <meta property="og:image" content={`${SITE_URL}/og-image-va-loans-michigan.jpg`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="VA Loans Michigan | Zero-Down Mortgage for Veterans" />
+        <meta name="twitter:description" content="Veterans and active-duty service members can buy a home in West Michigan with no money down." />
+        <meta name="twitter:image" content={`${SITE_URL}/og-image-va-loans-michigan.jpg`} />
       </Helmet>
-
+      <ArticleSchema 
+        title="VA Loans Michigan | Zero-Down Mortgage for Veterans in West Michigan"
+        description="Veterans and active-duty service members can buy a home in West Michigan with no money down. Learn how VA loans work and how to apply locally."
+        url="/va-loans-michigan"
+      />
+      <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: "VA Loans Michigan", url: "/va-loans-michigan" }]} />
       <Navigation />
       
       {/* Breadcrumbs */}

@@ -5,6 +5,9 @@ import Footer from "@/components/Footer";
 import LeadForm from "@/components/LeadForm";
 import { Card } from "@/components/ui/card";
 import { CheckCircle, DollarSign, Home, Building, Gift, ChevronRight } from "lucide-react";
+import { ArticleSchema, BreadcrumbSchema } from "@/components/StructuredData";
+
+const SITE_URL = "https://westmichigan-homehub.com";
 
 const DownPaymentAssistanceWestMichigan = () => {
   const programs = [
@@ -65,8 +68,23 @@ const DownPaymentAssistanceWestMichigan = () => {
           name="description" 
           content="See every down payment assistance program available in West Michigan. Compare MSHDA, city grants, and lender credits to buy a home with little cash upfront." 
         />
+        <link rel="canonical" href={`${SITE_URL}/down-payment-assistance-west-michigan`} />
+        <meta property="og:title" content="Down Payment Assistance in West Michigan | Grants, Loans & 2025 Resources" />
+        <meta property="og:description" content="See every down payment assistance program available in West Michigan. Compare MSHDA, city grants, and lender credits." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${SITE_URL}/down-payment-assistance-west-michigan`} />
+        <meta property="og:image" content={`${SITE_URL}/og-image-down-payment-assistance.jpg`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Down Payment Assistance in West Michigan" />
+        <meta name="twitter:description" content="See every down payment assistance program available in West Michigan." />
+        <meta name="twitter:image" content={`${SITE_URL}/og-image-down-payment-assistance.jpg`} />
       </Helmet>
-
+      <ArticleSchema 
+        title="Down Payment Assistance in West Michigan | Grants, Loans & 2025 Resources"
+        description="See every down payment assistance program available in West Michigan. Compare MSHDA, city grants, and lender credits to buy a home with little cash upfront."
+        url="/down-payment-assistance-west-michigan"
+      />
+      <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: "Down Payment Assistance", url: "/down-payment-assistance-west-michigan" }]} />
       <Navigation />
       
       {/* Breadcrumbs */}

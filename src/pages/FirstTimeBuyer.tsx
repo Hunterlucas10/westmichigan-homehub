@@ -1,9 +1,13 @@
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import LeadForm from "@/components/LeadForm";
 import { Card } from "@/components/ui/card";
 import { CheckCircle, Home, DollarSign, Shield, TrendingUp } from "lucide-react";
+import { ArticleSchema, BreadcrumbSchema } from "@/components/StructuredData";
+
+const SITE_URL = "https://westmichigan-homehub.com";
 
 const FirstTimeBuyer = () => {
   const programs = [
@@ -24,7 +28,7 @@ const FirstTimeBuyer = () => {
       downPayment: "Down payment assistance available",
       description: "Michigan's best-kept secret! MSHDA offers down payment assistance and lower mortgage rates to qualified first-time buyers.",
       highlights: [
-        "Up to $7,500 in down payment help",
+        "Up to $10,000 in down payment help",
         "Below-market interest rates",
         "Income limits apply (generous for West MI)",
       ],
@@ -79,6 +83,29 @@ const FirstTimeBuyer = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <Helmet>
+        <title>First-Time Homebuyer Programs in West Michigan | Low & Zero Down Options</title>
+        <meta 
+          name="description" 
+          content="Discover first-time homebuyer programs in West Michigan. Learn about FHA loans, MSHDA assistance, conventional 97, and USDA loans. Get pre-qualified with local lenders in Grand Rapids." 
+        />
+        <link rel="canonical" href={`${SITE_URL}/first-time-buyer`} />
+        <meta property="og:title" content="First-Time Homebuyer Programs in West Michigan | Low & Zero Down Options" />
+        <meta property="og:description" content="Discover first-time homebuyer programs in West Michigan. Learn about FHA loans, MSHDA assistance, and zero down options." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${SITE_URL}/first-time-buyer`} />
+        <meta property="og:image" content={`${SITE_URL}/og-image-first-time-buyer.jpg`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="First-Time Homebuyer Programs in West Michigan" />
+        <meta name="twitter:description" content="Discover first-time homebuyer programs in West Michigan. Learn about FHA loans, MSHDA assistance, and zero down options." />
+        <meta name="twitter:image" content={`${SITE_URL}/og-image-first-time-buyer.jpg`} />
+      </Helmet>
+      <ArticleSchema 
+        title="First-Time Homebuyer Programs in West Michigan"
+        description="Discover first-time homebuyer programs in West Michigan. Learn about FHA loans, MSHDA assistance, conventional 97, and USDA loans."
+        url="/first-time-buyer"
+      />
+      <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: "First-Time Buyer", url: "/first-time-buyer" }]} />
       <Navigation />
       
       {/* Hero Section */}
@@ -119,7 +146,7 @@ const FirstTimeBuyer = () => {
                 <p className="text-sm text-muted-foreground">Many programs accept credit scores in the 500s and 600s.</p>
               </div>
               <div>
-                <div className="text-4xl font-bold text-secondary mb-2">$7,500</div>
+                <div className="text-4xl font-bold text-secondary mb-2">$10,000</div>
                 <p className="text-foreground font-semibold mb-2">Down Payment Help</p>
                 <p className="text-sm text-muted-foreground">Programs like MSHDA offer thousands in assistance to cover your down payment.</p>
               </div>

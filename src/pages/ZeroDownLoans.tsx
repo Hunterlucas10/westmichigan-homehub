@@ -5,6 +5,9 @@ import Footer from "@/components/Footer";
 import LeadForm from "@/components/LeadForm";
 import { Card } from "@/components/ui/card";
 import { CheckCircle, Shield, Home, DollarSign, FileCheck, ChevronRight } from "lucide-react";
+import { ArticleSchema, BreadcrumbSchema } from "@/components/StructuredData";
+
+const SITE_URL = "https://westmichigan-homehub.com";
 
 const ZeroDownLoans = () => {
   const programs = [
@@ -60,8 +63,23 @@ const ZeroDownLoans = () => {
           name="description" 
           content="Explore Michigan home-loan options that require zero down payment. Veterans, rural buyers and first-timers in West Michigan can qualify for VA, USDA and other no-cash-down programs. Let us match you with the best lender today." 
         />
+        <link rel="canonical" href={`${SITE_URL}/zero-down-home-loans-michigan`} />
+        <meta property="og:title" content="Zero-Down Home Loans Michigan | VA, USDA & No Money Down Options" />
+        <meta property="og:description" content="Explore Michigan home-loan options that require zero down payment. Veterans, rural buyers and first-timers in West Michigan can qualify for VA, USDA and other no-cash-down programs." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${SITE_URL}/zero-down-home-loans-michigan`} />
+        <meta property="og:image" content={`${SITE_URL}/og-image-zero-down-loans.jpg`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Zero-Down Home Loans Michigan" />
+        <meta name="twitter:description" content="Explore Michigan home-loan options that require zero down payment." />
+        <meta name="twitter:image" content={`${SITE_URL}/og-image-zero-down-loans.jpg`} />
       </Helmet>
-
+      <ArticleSchema 
+        title="Zero-Down Home Loans Michigan | VA, USDA & No Money Down Options"
+        description="Explore Michigan home-loan options that require zero down payment. Veterans, rural buyers and first-timers in West Michigan can qualify for VA, USDA and other no-cash-down programs."
+        url="/zero-down-home-loans-michigan"
+      />
+      <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: "Zero Down Loans", url: "/zero-down-home-loans-michigan" }]} />
       <Navigation />
       
       {/* Breadcrumbs */}

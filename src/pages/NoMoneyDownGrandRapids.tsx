@@ -5,6 +5,9 @@ import Footer from "@/components/Footer";
 import LeadForm from "@/components/LeadForm";
 import { Card } from "@/components/ui/card";
 import { CheckCircle, Shield, Home, DollarSign, ChevronRight } from "lucide-react";
+import { ArticleSchema, BreadcrumbSchema } from "@/components/StructuredData";
+
+const SITE_URL = "https://westmichigan-homehub.com";
 
 const NoMoneyDownGrandRapids = () => {
   const programs = [
@@ -44,8 +47,23 @@ const NoMoneyDownGrandRapids = () => {
           name="description" 
           content="Yes, you can buy a home in West Michigan with no money down! Learn about VA, USDA, and MSHDA options to purchase with zero or low upfront costs." 
         />
+        <link rel="canonical" href={`${SITE_URL}/no-money-down-grand-rapids`} />
+        <meta property="og:title" content="Buy a House with No Money Down | Zero-Down Home Loans in Grand Rapids" />
+        <meta property="og:description" content="Yes, you can buy a home in West Michigan with no money down! Learn about VA, USDA, and MSHDA options." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${SITE_URL}/no-money-down-grand-rapids`} />
+        <meta property="og:image" content={`${SITE_URL}/og-image-no-money-down.jpg`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Buy a House with No Money Down in Grand Rapids" />
+        <meta name="twitter:description" content="Yes, you can buy a home in West Michigan with no money down!" />
+        <meta name="twitter:image" content={`${SITE_URL}/og-image-no-money-down.jpg`} />
       </Helmet>
-
+      <ArticleSchema 
+        title="Buy a House with No Money Down | Zero-Down Home Loans in Grand Rapids & West Michigan"
+        description="Yes, you can buy a home in West Michigan with no money down! Learn about VA, USDA, and MSHDA options to purchase with zero or low upfront costs."
+        url="/no-money-down-grand-rapids"
+      />
+      <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: "No Money Down Grand Rapids", url: "/no-money-down-grand-rapids" }]} />
       <Navigation />
       
       {/* Breadcrumbs */}

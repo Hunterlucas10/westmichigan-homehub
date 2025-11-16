@@ -1,12 +1,37 @@
+import { Helmet } from "react-helmet";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import LeadForm from "@/components/LeadForm";
+import FAQ from "@/components/FAQ";
+import SuccessStories from "@/components/SuccessStories";
 import { Card } from "@/components/ui/card";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, CheckCircle } from "lucide-react";
+import { BreadcrumbSchema, LocalBusinessSchema } from "@/components/StructuredData";
+
+const SITE_URL = "https://westmichigan-homehub.com";
 
 const Contact = () => {
   return (
     <div className="min-h-screen flex flex-col">
+      <Helmet>
+        <title>Contact Us - West Michigan Homebuyer Hub | Get Pre-Qualified Today</title>
+        <meta 
+          name="description" 
+          content="Contact West Michigan Homebuyer Hub to connect with trusted local lenders. Get pre-qualified for zero down, low down payment, and first-time homebuyer programs in Grand Rapids and West Michigan." 
+        />
+        <link rel="canonical" href={`${SITE_URL}/contact`} />
+        <meta property="og:title" content="Contact Us - West Michigan Homebuyer Hub | Get Pre-Qualified Today" />
+        <meta property="og:description" content="Contact West Michigan Homebuyer Hub to connect with trusted local lenders specializing in affordable loan programs." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${SITE_URL}/contact`} />
+        <meta property="og:image" content={`${SITE_URL}/og-image-contact.jpg`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Contact Us - West Michigan Homebuyer Hub" />
+        <meta name="twitter:description" content="Contact us to connect with trusted local lenders specializing in affordable loan programs." />
+        <meta name="twitter:image" content={`${SITE_URL}/og-image-contact.jpg`} />
+      </Helmet>
+      <LocalBusinessSchema />
+      <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: "Contact", url: "/contact" }]} />
       <Navigation />
       
       {/* Hero Section */}
@@ -91,12 +116,33 @@ const Contact = () => {
               </div>
 
               <Card className="p-6 bg-muted">
-                <h3 className="font-semibold text-foreground mb-2">Your Information is Secure</h3>
-                <p className="text-sm text-muted-foreground">
-                  We take your privacy seriously. Your information is encrypted and only shared 
-                  with verified local lenders who can help you with your homebuying needs. 
-                  We never sell your information to third parties.
-                </p>
+                <h3 className="font-semibold text-foreground mb-4">Your Information is Secure</h3>
+                <div className="space-y-3">
+                  <div className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <p className="text-sm text-muted-foreground">
+                      <strong className="text-foreground">Free Consultation</strong> - No cost to you
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <p className="text-sm text-muted-foreground">
+                      <strong className="text-foreground">No Obligation</strong> - You're never pressured
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <p className="text-sm text-muted-foreground">
+                      <strong className="text-foreground">100% Secure</strong> - Encrypted and protected
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                    <p className="text-sm text-muted-foreground">
+                      <strong className="text-foreground">We Never Sell Your Info</strong> - Your privacy matters
+                    </p>
+                  </div>
+                </div>
               </Card>
             </div>
 
@@ -107,6 +153,12 @@ const Contact = () => {
           </div>
         </div>
       </section>
+
+      {/* Success Stories Section */}
+      <SuccessStories />
+
+      {/* FAQ Section */}
+      <FAQ />
 
       <Footer />
     </div>

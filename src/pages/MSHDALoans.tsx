@@ -5,6 +5,9 @@ import Footer from "@/components/Footer";
 import LeadForm from "@/components/LeadForm";
 import { Card } from "@/components/ui/card";
 import { CheckCircle, Home, DollarSign, GraduationCap, FileText, ChevronRight } from "lucide-react";
+import { ArticleSchema, BreadcrumbSchema } from "@/components/StructuredData";
+
+const SITE_URL = "https://westmichigan-homehub.com";
 
 const MSHDALoans = () => {
   const benefits = [
@@ -54,8 +57,23 @@ const MSHDALoans = () => {
           name="description" 
           content="Learn how MSHDA's MI Home Loan and Down Payment Assistance programs help West Michigan homebuyers with up to $10,000 in support. See eligibility, income limits, and steps to apply." 
         />
+        <link rel="canonical" href={`${SITE_URL}/mshda-loans-michigan`} />
+        <meta property="og:title" content="MSHDA MI Home Loan & Down Payment Assistance | West Michigan" />
+        <meta property="og:description" content="Learn how MSHDA's MI Home Loan and Down Payment Assistance programs help West Michigan homebuyers with up to $10,000 in support." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`${SITE_URL}/mshda-loans-michigan`} />
+        <meta property="og:image" content={`${SITE_URL}/og-image-mshda-loans.jpg`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="MSHDA MI Home Loan & Down Payment Assistance" />
+        <meta name="twitter:description" content="Learn how MSHDA's programs help West Michigan homebuyers with up to $10,000 in support." />
+        <meta name="twitter:image" content={`${SITE_URL}/og-image-mshda-loans.jpg`} />
       </Helmet>
-
+      <ArticleSchema 
+        title="MSHDA MI Home Loan & Down Payment Assistance | West Michigan Eligibility & Application Guide"
+        description="Learn how MSHDA's MI Home Loan and Down Payment Assistance programs help West Michigan homebuyers with up to $10,000 in support. See eligibility, income limits, and steps to apply."
+        url="/mshda-loans-michigan"
+      />
+      <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: "MSHDA Loans", url: "/mshda-loans-michigan" }]} />
       <Navigation />
       
       {/* Breadcrumbs */}
