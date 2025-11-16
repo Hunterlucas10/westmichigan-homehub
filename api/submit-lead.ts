@@ -78,9 +78,24 @@ export default async function handler(
 
     if (error) {
       console.error('Supabase error:', error);
+      console.error('Error code:', error.code);
+      console.error('Error message:', error.message);
+      console.error('Full error:', JSON.stringify(error, null, 2));
+      
+      // Provide more helpful error message for RLS issues
+      if (error.code === '42501') {
+        return response.status(500).json({ 
+          error: 'Database permission error',
+          message: 'Row Level Security policy is blocking this insert. Please check RLS policies in Supabase.',
+          code: error.code,
+          hint: 'Verify that the "Allow anonymous inserts" policy exists and is set to Permissive for INSERT operations on the anon role.'
+        });
+      }
+      
       return response.status(500).json({ 
         error: 'Database error',
         message: error.message,
+        code: error.code,
         details: error
       });
     }
