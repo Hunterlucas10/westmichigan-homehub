@@ -2,12 +2,30 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { createClient } from '@supabase/supabase-js';
 import { Resend } from 'resend';
 
-const supabase = createClient(
-  process.env.SUPABASE_URL!,
-  process.env.SUPABASE_ANON_KEY!
-);
+// Initialize Supabase client inside handler to ensure env vars are available
+let supabase: ReturnType<typeof createClient> | null = null;
+let resend: Resend | null = null;
 
-const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
+function getSupabaseClient() {
+  if (!process.env.SUPABASE_URL || !process.env.SUPABASE_ANON_KEY) {
+    throw new Error('Missing Supabase environment variables: SUPABASE_URL and SUPABASE_ANON_KEY must be set');
+  }
+  
+  if (!supabase) {
+    supabase = createClient(
+      process.env.SUPABASE_URL,
+      process.env.SUPABASE_ANON_KEY
+    );
+  }
+  return supabase;
+}
+
+function getResendClient() {
+  if (process.env.RESEND_API_KEY && !resend) {
+    resend = new Resend(process.env.RESEND_API_KEY);
+  }
+  return resend;
+}
 
 export default async function handler(
   request: VercelRequest,
@@ -26,16 +44,10 @@ export default async function handler(
     return response.status(405).json({ error: 'Method not allowed' });
   }
 
-  // Check if environment variables are set
-  if (!process.env.SUPABASE_URL || !process.env.SUPABASE_ANON_KEY) {
-    console.error('Missing Supabase environment variables');
-    return response.status(500).json({ 
-      error: 'Server configuration error',
-      message: 'Supabase credentials not configured'
-    });
-  }
-
   try {
+    // Get Supabase client (will throw if env vars are missing)
+    const supabaseClient = getSupabaseClient();
+    
     const { name, email, phone, city, firstTimeBuyer, mostImportant, source = 'lead_form' } = request.body;
 
     // Validate required fields
@@ -47,7 +59,7 @@ export default async function handler(
     }
 
     // Store in Supabase
-    const { data, error } = await supabase
+    const { data, error } = await supabaseClient
       .from('leads')
       .insert({
         name,
@@ -63,13 +75,18 @@ export default async function handler(
 
     if (error) {
       console.error('Supabase error:', error);
-      throw error;
+      return response.status(500).json({ 
+        error: 'Database error',
+        message: error.message,
+        details: error
+      });
     }
 
     // Send email notification (if Resend is configured)
-    if (resend && process.env.NOTIFICATION_EMAIL) {
+    const resendClient = getResendClient();
+    if (resendClient && process.env.NOTIFICATION_EMAIL) {
       try {
-        await resend.emails.send({
+        await resendClient.emails.send({
           from: 'West Michigan Homebuyer Hub <noreply@resend.dev>',
           to: process.env.NOTIFICATION_EMAIL,
           subject: `New Lead Submission - ${name}`,
@@ -99,9 +116,17 @@ export default async function handler(
     });
   } catch (error) {
     console.error('Error submitting lead:', error);
+    
+    // Provide more detailed error information
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const isConfigError = errorMessage.includes('Missing Supabase environment variables');
+    
     return response.status(500).json({ 
-      error: 'Failed to submit lead',
-      message: error instanceof Error ? error.message : 'Unknown error'
+      error: isConfigError ? 'Server configuration error' : 'Failed to submit lead',
+      message: errorMessage,
+      ...(isConfigError && {
+        hint: 'Please check that SUPABASE_URL and SUPABASE_ANON_KEY are set in Vercel environment variables'
+      })
     });
   }
 }
