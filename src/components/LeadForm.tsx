@@ -43,10 +43,24 @@ const LeadForm = ({ variant = "hero" }: LeadFormProps) => {
         }),
       });
 
-      const data = await response.json();
+      // Get response as text first, then try to parse as JSON
+      const responseText = await response.text();
+      let data;
+      try {
+        data = JSON.parse(responseText);
+      } catch (jsonError) {
+        // If response is not JSON, use the text as error message
+        throw new Error(`Server error: ${response.status} ${response.statusText}. ${responseText || 'Unknown error'}`);
+      }
 
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to submit');
+        const errorMessage = data.error || data.message || 'Failed to submit';
+        console.error('API Error:', {
+          status: response.status,
+          statusText: response.statusText,
+          error: data
+        });
+        throw new Error(errorMessage);
       }
 
       toast({
@@ -65,9 +79,10 @@ const LeadForm = ({ variant = "hero" }: LeadFormProps) => {
       });
     } catch (error) {
       console.error('Form submission error:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Something went wrong. Please try again or contact us directly.';
       toast({
         title: "Error",
-        description: "Something went wrong. Please try again or contact us directly.",
+        description: errorMessage,
         variant: "destructive",
       });
     } finally {

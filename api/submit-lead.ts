@@ -13,8 +13,26 @@ export default async function handler(
   request: VercelRequest,
   response: VercelResponse,
 ) {
+  // Enable CORS
+  response.setHeader('Access-Control-Allow-Origin', '*');
+  response.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (request.method === 'OPTIONS') {
+    return response.status(200).end();
+  }
+
   if (request.method !== 'POST') {
     return response.status(405).json({ error: 'Method not allowed' });
+  }
+
+  // Check if environment variables are set
+  if (!process.env.SUPABASE_URL || !process.env.SUPABASE_ANON_KEY) {
+    console.error('Missing Supabase environment variables');
+    return response.status(500).json({ 
+      error: 'Server configuration error',
+      message: 'Supabase credentials not configured'
+    });
   }
 
   try {
