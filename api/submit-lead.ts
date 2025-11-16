@@ -1,31 +1,32 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { createClient } from '@supabase/supabase-js';
+import { MongoClient } from 'mongodb';
 import { Resend } from 'resend';
 
-// Initialize Supabase client inside handler to ensure env vars are available
-let supabase: ReturnType<typeof createClient> | null = null;
+// MongoDB client connection (reused across invocations for serverless optimization)
+let cachedClient: MongoClient | null = null;
 let resend: Resend | null = null;
 
-function getSupabaseClient() {
-  const supabaseUrl = process.env.SUPABASE_URL;
-  const supabaseKey = process.env.SUPABASE_ANON_KEY;
+async function getMongoClient(): Promise<MongoClient> {
+  const mongoUri = process.env.MONGODB_URI;
   
-  if (!supabaseUrl || !supabaseKey) {
-    const missing = [];
-    if (!supabaseUrl) missing.push('SUPABASE_URL');
-    if (!supabaseKey) missing.push('SUPABASE_ANON_KEY');
-    throw new Error(`Missing Supabase environment variables: ${missing.join(', ')} must be set in Vercel`);
+  if (!mongoUri) {
+    throw new Error('Missing MONGODB_URI environment variable. Please set it in Vercel environment variables.');
   }
-  
-  if (!supabase) {
-    supabase = createClient(supabaseUrl, supabaseKey, {
-      auth: {
-        persistSession: false,
-        autoRefreshToken: false,
-      },
-    });
+
+  // Reuse existing connection if available
+  if (cachedClient) {
+    return cachedClient;
   }
-  return supabase;
+
+  // Create new connection
+  cachedClient = new MongoClient(mongoUri, {
+    maxPoolSize: 10,
+    serverSelectionTimeoutMS: 5000,
+    socketTimeoutMS: 45000,
+  });
+
+  await cachedClient.connect();
+  return cachedClient;
 }
 
 function getResendClient() {
@@ -52,10 +53,9 @@ export default async function handler(
     return response.status(405).json({ error: 'Method not allowed' });
   }
 
+  let mongoClient: MongoClient | null = null;
+
   try {
-    // Get Supabase client (will throw if env vars are missing)
-    const supabaseClient = getSupabaseClient();
-    
     const { name, email, phone, city, firstTimeBuyer, mostImportant, source = 'lead_form' } = request.body;
 
     // Validate required fields
@@ -66,43 +66,28 @@ export default async function handler(
       });
     }
 
-    // Store in Supabase
-    const { data, error } = await supabaseClient
-      .from('leads')
-      .insert({
-        name,
-        email,
-        phone,
-        city,
-        first_time_buyer: firstTimeBuyer || null,
-        most_important: mostImportant || null,
-        source
-      })
-      .select()
-      .single();
+    // Get MongoDB client
+    mongoClient = await getMongoClient();
+    const db = mongoClient.db('westmichigan-homehub');
+    const collection = db.collection('leads');
 
-    if (error) {
-      console.error('Supabase error:', error);
-      console.error('Error code:', error.code);
-      console.error('Error message:', error.message);
-      console.error('Full error:', JSON.stringify(error, null, 2));
-      
-      // Provide more helpful error message for RLS issues
-      if (error.code === '42501') {
-        return response.status(500).json({ 
-          error: 'Database permission error',
-          message: 'Row Level Security policy is blocking this insert. Please check RLS policies in Supabase.',
-          code: error.code,
-          hint: 'Verify that the "Allow anonymous inserts" policy exists and is set to Permissive for INSERT operations on the anon role.'
-        });
-      }
-      
-      return response.status(500).json({ 
-        error: 'Database error',
-        message: error.message,
-        code: error.code,
-        details: error
-      });
+    // Prepare document for insertion
+    const leadDocument = {
+      name,
+      email,
+      phone,
+      city,
+      first_time_buyer: firstTimeBuyer || null,
+      most_important: mostImportant || null,
+      source,
+      created_at: new Date(),
+    };
+
+    // Insert into MongoDB
+    const result = await collection.insertOne(leadDocument);
+
+    if (!result.insertedId) {
+      throw new Error('Failed to insert lead into database');
     }
 
     // Send email notification (if Resend is configured)
@@ -124,7 +109,7 @@ export default async function handler(
             <p><strong>Source:</strong> ${source}</p>
             <p><strong>Submitted:</strong> ${new Date().toLocaleString()}</p>
             <hr>
-            <p><em>Lead ID: ${data.id}</em></p>
+            <p><em>Lead ID: ${result.insertedId}</em></p>
           `,
         });
       } catch (emailError) {
@@ -135,34 +120,37 @@ export default async function handler(
 
     return response.status(200).json({ 
       success: true,
-      leadId: data.id 
+      leadId: result.insertedId.toString()
     });
   } catch (error) {
     console.error('Error submitting lead:', error);
     
     // Provide more detailed error information
     const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-    const isConfigError = errorMessage.includes('Missing Supabase environment variables');
+    const isConfigError = errorMessage.includes('Missing MONGODB_URI');
     
-    // Log environment variable status for debugging (don't expose values)
-    console.error('Environment check:', {
-      hasSupabaseUrl: !!process.env.SUPABASE_URL,
-      hasSupabaseKey: !!process.env.SUPABASE_ANON_KEY,
-      supabaseUrlLength: process.env.SUPABASE_URL?.length || 0,
-      supabaseKeyLength: process.env.SUPABASE_ANON_KEY?.length || 0
-    });
+    // Handle MongoDB-specific errors
+    let errorDetails: any = {};
+    if (error && typeof error === 'object' && 'name' in error) {
+      const mongoError = error as any;
+      if (mongoError.name === 'MongoServerError' || mongoError.name === 'MongoNetworkError') {
+        errorDetails = {
+          type: mongoError.name,
+          message: mongoError.message,
+        };
+      }
+    }
     
     return response.status(500).json({ 
       error: isConfigError ? 'Server configuration error' : 'Failed to submit lead',
       message: errorMessage,
       ...(isConfigError && {
-        hint: 'Please check that SUPABASE_URL and SUPABASE_ANON_KEY are set in Vercel environment variables and redeploy',
+        hint: 'Please check that MONGODB_URI is set in Vercel environment variables and redeploy',
         debug: {
-          hasSupabaseUrl: !!process.env.SUPABASE_URL,
-          hasSupabaseKey: !!process.env.SUPABASE_ANON_KEY
+          hasMongoUri: !!process.env.MONGODB_URI
         }
-      })
+      }),
+      ...(Object.keys(errorDetails).length > 0 && { details: errorDetails })
     });
   }
 }
-
