@@ -23,8 +23,9 @@ const LeadForm = ({ variant = "hero" }: LeadFormProps) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    const form = e.currentTarget as HTMLFormElement;
     // Disable submit button during submission
-    const submitButton = e.currentTarget.querySelector('button[type="submit"]') as HTMLButtonElement;
+    const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
     const originalText = submitButton?.textContent || 'Check My Eligibility';
     if (submitButton) {
       submitButton.disabled = true;
@@ -87,7 +88,8 @@ const LeadForm = ({ variant = "hero" }: LeadFormProps) => {
       });
     } finally {
       // Re-enable submit button
-      const submitButton = e.currentTarget.querySelector('button[type="submit"]') as HTMLButtonElement;
+      const form = e.currentTarget as HTMLFormElement;
+      const submitButton = form?.querySelector('button[type="submit"]') as HTMLButtonElement;
       if (submitButton) {
         submitButton.disabled = false;
         submitButton.textContent = originalText;
