@@ -99,19 +99,19 @@ const ExitIntentPopup = () => {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="max-w-md max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="text-2xl text-center">
+          <DialogTitle className="text-xl md:text-2xl text-center">
             Can We Make This Easier for You?
           </DialogTitle>
-          <DialogDescription className="text-center text-base pt-2">
+          <DialogDescription className="text-center text-sm md:text-base pt-2">
             Let a local homebuying specialist reach out to help you find the best programs and lenders for your situation. <strong>No cost, no obligation.</strong>
           </DialogDescription>
         </DialogHeader>
 
-        <form onSubmit={handleSubmit} className="space-y-4 pt-4">
+        <form onSubmit={handleSubmit} className="space-y-3 pt-2">
           <div>
-            <Label htmlFor="exit-name">Full Name *</Label>
+            <Label htmlFor="exit-name" className="text-sm">Full Name *</Label>
             <Input
               id="exit-name"
               type="text"
@@ -124,7 +124,7 @@ const ExitIntentPopup = () => {
           </div>
 
           <div>
-            <Label htmlFor="exit-email">Email Address *</Label>
+            <Label htmlFor="exit-email" className="text-sm">Email Address *</Label>
             <Input
               id="exit-email"
               type="email"
@@ -137,7 +137,7 @@ const ExitIntentPopup = () => {
           </div>
 
           <div>
-            <Label htmlFor="exit-phone">Phone Number *</Label>
+            <Label htmlFor="exit-phone" className="text-sm">Phone Number *</Label>
             <Input
               id="exit-phone"
               type="tel"
@@ -149,25 +149,26 @@ const ExitIntentPopup = () => {
             />
           </div>
 
-          <div className="flex gap-3">
+          <div className="flex flex-col sm:flex-row gap-2 pt-2">
             <Button 
               type="submit" 
-              className="flex-1 bg-accent hover:bg-accent/90 text-lg py-6"
+              className="flex-1 bg-accent hover:bg-accent/90 text-sm md:text-base py-3"
             >
-              <Phone className="w-5 h-5 mr-2" />
-              Yes, Have Someone Reach Out
+              <Phone className="w-4 h-4 mr-2" />
+              <span className="hidden sm:inline">Yes, Have Someone Reach Out</span>
+              <span className="sm:hidden">Yes, Reach Out</span>
             </Button>
             <Button 
               type="button"
               variant="outline"
               onClick={() => setIsOpen(false)}
-              className="flex-1 text-lg py-6"
+              className="flex-1 text-sm md:text-base py-3"
             >
               No Thanks
             </Button>
           </div>
 
-          <p className="text-xs text-muted-foreground text-center">
+          <p className="text-xs text-muted-foreground text-center pt-1">
             Your information is secure and only shared with verified local lenders. We never sell your info.
           </p>
         </form>
