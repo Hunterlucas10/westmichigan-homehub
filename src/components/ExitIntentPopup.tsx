@@ -10,12 +10,16 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { Download } from "lucide-react";
+import { Phone } from "lucide-react";
 
 const ExitIntentPopup = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [hasShown, setHasShown] = useState(false);
-  const [email, setEmail] = useState("");
+  const [contactInfo, setContactInfo] = useState({
+    name: "",
+    email: "",
+    phone: "",
+  });
   const { toast } = useToast();
 
   useEffect(() => {
@@ -45,9 +49,9 @@ const ExitIntentPopup = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!email) {
+    if (!contactInfo.name || !contactInfo.email || !contactInfo.phone) {
       toast({
-        title: "Please enter your email",
+        title: "Please fill in all fields",
         variant: "destructive",
       });
       return;
@@ -60,9 +64,9 @@ const ExitIntentPopup = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          name: 'Exit Intent Lead',
-          email: email,
-          phone: '',
+          name: contactInfo.name,
+          email: contactInfo.email,
+          phone: contactInfo.phone,
           city: '',
           firstTimeBuyer: '',
           mostImportant: '',
@@ -78,10 +82,10 @@ const ExitIntentPopup = () => {
 
       toast({
         title: "Thank you!",
-        description: "Your free guide will be sent to your email shortly.",
+        description: "A specialist will reach out to you shortly to help make your homebuying journey easier.",
       });
 
-      setEmail("");
+      setContactInfo({ name: "", email: "", phone: "" });
       setIsOpen(false);
     } catch (error) {
       console.error('Exit intent submission error:', error);
@@ -98,34 +102,73 @@ const ExitIntentPopup = () => {
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="text-2xl text-center">
-            Wait! Get Your Free Homebuyer Guide
+            Can We Make This Easier for You?
           </DialogTitle>
           <DialogDescription className="text-center text-base pt-2">
-            Don't miss out on our comprehensive guide: <strong>"10 Steps to Homeownership in West Michigan"</strong>
+            Let a local homebuying specialist reach out to help you find the best programs and lenders for your situation. <strong>No cost, no obligation.</strong>
           </DialogDescription>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-4 pt-4">
+          <div>
+            <Label htmlFor="exit-name">Full Name *</Label>
+            <Input
+              id="exit-name"
+              type="text"
+              required
+              value={contactInfo.name}
+              onChange={(e) => setContactInfo({ ...contactInfo, name: e.target.value })}
+              placeholder="John Smith"
+              className="mt-1"
+            />
+          </div>
+
           <div>
             <Label htmlFor="exit-email">Email Address *</Label>
             <Input
               id="exit-email"
               type="email"
               required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={contactInfo.email}
+              onChange={(e) => setContactInfo({ ...contactInfo, email: e.target.value })}
               placeholder="your@email.com"
               className="mt-1"
             />
           </div>
 
-          <Button type="submit" className="w-full bg-accent hover:bg-accent/90 text-lg py-6">
-            <Download className="w-5 h-5 mr-2" />
-            Get My Free Guide
-          </Button>
+          <div>
+            <Label htmlFor="exit-phone">Phone Number *</Label>
+            <Input
+              id="exit-phone"
+              type="tel"
+              required
+              value={contactInfo.phone}
+              onChange={(e) => setContactInfo({ ...contactInfo, phone: e.target.value })}
+              placeholder="(616) 555-1234"
+              className="mt-1"
+            />
+          </div>
+
+          <div className="flex gap-3">
+            <Button 
+              type="submit" 
+              className="flex-1 bg-accent hover:bg-accent/90 text-lg py-6"
+            >
+              <Phone className="w-5 h-5 mr-2" />
+              Yes, Have Someone Reach Out
+            </Button>
+            <Button 
+              type="button"
+              variant="outline"
+              onClick={() => setIsOpen(false)}
+              className="flex-1 text-lg py-6"
+            >
+              No Thanks
+            </Button>
+          </div>
 
           <p className="text-xs text-muted-foreground text-center">
-            We'll send you the guide instantly. No spam, unsubscribe anytime.
+            Your information is secure and only shared with verified local lenders. We never sell your info.
           </p>
         </form>
       </DialogContent>
