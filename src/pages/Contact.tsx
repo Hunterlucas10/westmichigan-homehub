@@ -147,7 +147,7 @@ const Contact = () => {
             </div>
 
             {/* Lead Form */}
-            <div>
+            <div id="contact-form">
               <LeadForm variant="sidebar" />
             </div>
           </div>

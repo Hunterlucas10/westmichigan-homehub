@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { Download, X } from "lucide-react";
+import { Download } from "lucide-react";
 
 const ExitIntentPopup = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -128,15 +128,6 @@ const ExitIntentPopup = () => {
             We'll send you the guide instantly. No spam, unsubscribe anytime.
           </p>
         </form>
-
-        <Button
-          variant="ghost"
-          onClick={() => setIsOpen(false)}
-          className="absolute right-2 top-2"
-          aria-label="Close"
-        >
-          <X className="w-4 h-4" />
-        </Button>
       </DialogContent>
     </Dialog>
   );
