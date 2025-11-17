@@ -75,8 +75,7 @@ const StickyCTA = () => {
         className="rounded-full shadow-lg bg-accent hover:bg-accent/90 text-sm md:text-lg px-4 py-4 md:px-6 md:py-6 h-auto"
       >
         <ArrowUp className="w-4 h-4 md:w-5 md:h-5 mr-1 md:mr-2" />
-        <span className="hidden sm:inline">Get Pre-Qualified</span>
-        <span className="sm:hidden">Get Pre-Qual</span>
+        Get Pre-Qualified
       </Button>
     </div>
   );
