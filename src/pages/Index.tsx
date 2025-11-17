@@ -115,10 +115,10 @@ const Index = () => {
             {/* Left Column - Content */}
             <div className="text-background">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                Get Matched to the Best Lender for Your Situation in West Michigan
+                Find the Right Loan. Find the Right Lender. Find Your Home.
               </h1>
               <p className="text-xl md:text-2xl mb-4 text-background/90">
-                We connect you with the lender best suited to help your needs in your area. At no cost. No BS. Just the right match for you and your family.
+                From zero-down and first-time buyer programs to low-rate mortgage options, we simplify the process and connect you with a lender who can actually get you approved. Free, local, and built around you.
               </p>
               <div className="flex flex-wrap items-center gap-4 mb-8 text-sm text-background/80">
                 <span className="flex items-center gap-1">
