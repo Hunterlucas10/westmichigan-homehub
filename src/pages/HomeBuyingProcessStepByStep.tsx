@@ -126,7 +126,7 @@ const HomeBuyingProcessStepByStep = () => {
             <h2 className="text-3xl font-bold text-foreground mb-6 mt-12">
               What You'll Need
             </h2>
-            <Card className="p-6 bg-muted mb-12">
+            <Card className="p-6 bg-muted mb-8">
               <ul className="space-y-3">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
@@ -143,6 +143,380 @@ const HomeBuyingProcessStepByStep = () => {
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
                   <span className="text-foreground"><strong>ID and Social Security card:</strong> For identity verification</span>
+                </li>
+              </ul>
+            </Card>
+
+            <h2 className="text-3xl font-bold text-foreground mb-6 mt-12">
+              Step 1: Get Pre-Qualified - In Detail
+            </h2>
+            <p className="text-lg text-muted-foreground mb-6">
+              Pre-qualification is your first official step and sets the foundation for your entire homebuying journey:
+            </p>
+
+            <Card className="p-6 mb-8">
+              <h3 className="text-xl font-bold text-foreground mb-4">What Happens During Pre-Qualification</h3>
+              <div className="space-y-3">
+                <p className="text-muted-foreground">
+                  <strong>Initial conversation:</strong> You'll discuss your income, debts, assets, and credit with a lender. This is typically 
+                  a phone call or in-person meeting that takes 15-30 minutes.
+                </p>
+                <p className="text-muted-foreground">
+                  <strong>Soft credit check:</strong> The lender will do a soft pull of your credit (doesn't affect your score) to get an 
+                  initial assessment.
+                </p>
+                <p className="text-muted-foreground">
+                  <strong>Pre-qualification letter:</strong> You'll receive a letter stating how much you're pre-qualified to borrow. This 
+                  shows sellers and real estate agents that you're a serious buyer.
+                </p>
+                <p className="text-muted-foreground">
+                  <strong>Budget discussion:</strong> Your lender will help you understand what monthly payment you can comfortably afford, 
+                  which may be different from your maximum pre-qualification amount.
+                </p>
+              </div>
+            </Card>
+
+            <Card className="p-6 mb-8">
+              <h3 className="text-xl font-bold text-foreground mb-4">Pre-Qualification vs. Pre-Approval</h3>
+              <p className="text-muted-foreground mb-3">
+                It's important to understand the difference:
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Pre-qualification:</strong> Quick estimate based on information you provide (no verification)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Pre-approval:</strong> More thorough process where lender verifies your income, assets, and credit</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>For competitive markets:</strong> Pre-approval is stronger and shows sellers you're ready to move quickly</span>
+                </li>
+              </ul>
+            </Card>
+
+            <h2 className="text-3xl font-bold text-foreground mb-6 mt-12">
+              Step 2: Find Your Home - In Detail
+            </h2>
+            <p className="text-lg text-muted-foreground mb-6">
+              Once pre-qualified, you'll work with a real estate agent to find homes that fit your budget and needs:
+            </p>
+
+            <Card className="p-6 mb-8">
+              <h3 className="text-xl font-bold text-foreground mb-4">Working with a Real Estate Agent</h3>
+              <p className="text-muted-foreground mb-3">
+                A good agent will:
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground">Help you understand the local market and neighborhoods</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground">Set up home searches based on your criteria</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground">Schedule showings and attend them with you</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground">Provide market analysis and help you make competitive offers</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground">Negotiate on your behalf throughout the process</span>
+                </li>
+              </ul>
+            </Card>
+
+            <Card className="p-6 mb-8">
+              <h3 className="text-xl font-bold text-foreground mb-4">What to Look For During Showings</h3>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Location:</strong> Neighborhood, schools, commute, nearby amenities</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Condition:</strong> Age of major systems (HVAC, roof, plumbing, electrical)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Layout:</strong> Does it fit your lifestyle and needs?</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Potential issues:</strong> Signs of water damage, foundation problems, etc.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Future value:</strong> Is the area appreciating? Are there planned developments?</span>
+                </li>
+              </ul>
+            </Card>
+
+            <h2 className="text-3xl font-bold text-foreground mb-6 mt-12">
+              Step 3: Make an Offer - In Detail
+            </h2>
+            <p className="text-lg text-muted-foreground mb-6">
+              Making an offer is more than just naming a price. Your offer includes several components:
+            </p>
+
+            <Card className="p-6 mb-8">
+              <h3 className="text-xl font-bold text-foreground mb-4">Components of an Offer</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Purchase price:</strong> The amount you're offering to pay</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Earnest money:</strong> Typically 1-3% of purchase price, shows you're serious</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Contingencies:</strong> Conditions that must be met (inspection, appraisal, financing)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Closing date:</strong> When you want to take possession</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Personal property:</strong> Items you want included (appliances, window treatments, etc.)</span>
+                </li>
+              </ul>
+            </Card>
+
+            <Card className="p-6 mb-8">
+              <h3 className="text-xl font-bold text-foreground mb-4">Common Contingencies</h3>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Inspection contingency:</strong> Allows you to back out or negotiate repairs based on inspection</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Appraisal contingency:</strong> Protects you if the home appraises for less than your offer</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Financing contingency:</strong> Allows you to back out if you can't secure financing</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Home sale contingency:</strong> If you need to sell your current home first (less competitive)</span>
+                </li>
+              </ul>
+            </Card>
+
+            <h2 className="text-3xl font-bold text-foreground mb-6 mt-12">
+              Step 4: Home Inspection & Appraisal - In Detail
+            </h2>
+            <p className="text-lg text-muted-foreground mb-6">
+              Once your offer is accepted, you'll enter the due diligence phase:
+            </p>
+
+            <Card className="p-6 mb-8">
+              <h3 className="text-xl font-bold text-foreground mb-4">Home Inspection</h3>
+              <p className="text-muted-foreground mb-3">
+                A professional inspector will examine the home's condition:
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Structural:</strong> Foundation, walls, roof, framing</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Systems:</strong> HVAC, plumbing, electrical, water heater</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Safety:</strong> Smoke detectors, carbon monoxide detectors, railings</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Exterior:</strong> Siding, windows, doors, drainage</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Cost:</strong> Typically $300-$500, paid by buyer</span>
+                </li>
+              </ul>
+              <p className="text-sm text-muted-foreground mt-4">
+                <strong>After inspection:</strong> You can request repairs, ask for a credit, renegotiate the price, or back out if issues are too significant.
+              </p>
+            </Card>
+
+            <Card className="p-6 mb-8">
+              <h3 className="text-xl font-bold text-foreground mb-4">Appraisal</h3>
+              <p className="text-muted-foreground mb-3">
+                The lender orders an appraisal to confirm the home's value:
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Purpose:</strong> Protects the lender by ensuring the home is worth the loan amount</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Process:</strong> Appraiser visits the home and compares it to similar recent sales</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>If appraises low:</strong> You may need to renegotiate, bring more cash, or back out</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Cost:</strong> Typically $300-$500, paid by buyer (often at closing)</span>
+                </li>
+              </ul>
+            </Card>
+
+            <h2 className="text-3xl font-bold text-foreground mb-6 mt-12">
+              Step 5: Close & Move In - In Detail
+            </h2>
+            <p className="text-lg text-muted-foreground mb-6">
+              Closing is the final step where ownership transfers to you:
+            </p>
+
+            <Card className="p-6 mb-8">
+              <h3 className="text-xl font-bold text-foreground mb-4">Before Closing</h3>
+              <div className="space-y-3">
+                <p className="text-muted-foreground">
+                  <strong>Final walkthrough:</strong> Typically done 24-48 hours before closing. You'll verify the home is in the same condition 
+                  as when you made the offer and that any agreed-upon repairs were completed.
+                </p>
+                <p className="text-muted-foreground">
+                  <strong>Closing disclosure:</strong> You'll receive this 3 days before closing. Review it carefully and compare to your Loan 
+                  Estimate to ensure everything matches.
+                </p>
+                <p className="text-muted-foreground">
+                  <strong>Wire transfer or cashier's check:</strong> You'll need to bring funds for closing costs and down payment. Your lender 
+                  will tell you the exact amount and how to transfer it.
+                </p>
+              </div>
+            </Card>
+
+            <Card className="p-6 mb-8">
+              <h3 className="text-xl font-bold text-foreground mb-4">Closing Day</h3>
+              <div className="space-y-3">
+                <p className="text-muted-foreground">
+                  <strong>What to bring:</strong> Government-issued ID, cashier's check or wire confirmation, and any other documents your lender requests.
+                </p>
+                <p className="text-muted-foreground">
+                  <strong>Who's there:</strong> You, your real estate agent, the seller's agent, closing agent (title company or attorney), 
+                  and sometimes the seller.
+                </p>
+                <p className="text-muted-foreground">
+                  <strong>What you'll sign:</strong> Mortgage note, deed of trust, closing disclosure, and numerous other documents. 
+                  The closing agent will guide you through each one.
+                </p>
+                <p className="text-muted-foreground">
+                  <strong>How long:</strong> Typically 1-2 hours, depending on complexity and questions.
+                </p>
+                <p className="text-muted-foreground">
+                  <strong>After signing:</strong> The deed is recorded with the county, and you get the keys! Ownership officially transfers to you.
+                </p>
+              </div>
+            </Card>
+
+            <h2 className="text-3xl font-bold text-foreground mb-6 mt-12">
+              Common Timeline and Delays
+            </h2>
+            <p className="text-lg text-muted-foreground mb-6">
+              While the process typically takes 30-45 days, delays can happen:
+            </p>
+
+            <Card className="p-6 bg-muted mb-8">
+              <h3 className="text-xl font-bold text-foreground mb-4">Typical Timeline</h3>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Days 1-3:</strong> Pre-qualification and finding a real estate agent</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Days 4-30:</strong> Home search and making offers</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Days 31-35:</strong> Offer accepted, inspection scheduled</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Days 36-45:</strong> Inspection, appraisal, underwriting, final approval</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Day 45:</strong> Closing and move-in!</span>
+                </li>
+              </ul>
+            </Card>
+
+            <Card className="p-6 mb-8">
+              <h3 className="text-xl font-bold text-foreground mb-4">Common Delays</h3>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Inspection issues:</strong> Negotiating repairs can add 3-7 days</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Low appraisal:</strong> Renegotiation or bringing more cash can delay 5-10 days</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Underwriting requests:</strong> Additional documentation can add 3-5 days</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Title issues:</strong> Resolving liens or ownership questions can delay 7-14 days</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Seller delays:</strong> Seller not ready to move, repairs not completed, etc.</span>
+                </li>
+              </ul>
+            </Card>
+
+            <h2 className="text-3xl font-bold text-foreground mb-6 mt-12">
+              Tips for a Smooth Homebuying Process
+            </h2>
+            <p className="text-lg text-muted-foreground mb-6">
+              Here are strategies to make your homebuying journey as smooth as possible:
+            </p>
+
+            <Card className="p-6 mb-8">
+              <ul className="space-y-3">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Get pre-approved, not just pre-qualified:</strong> In competitive markets, pre-approval makes your offer stronger</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Don't make major financial changes:</strong> Avoid large purchases, new credit, or job changes during the process</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Respond quickly:</strong> Return lender requests, inspection responses, and other time-sensitive items promptly</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Stay organized:</strong> Keep all documents, emails, and communications in one place</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Ask questions:</strong> Don't hesitate to ask your lender, agent, or closing agent about anything you don't understand</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Be flexible:</strong> Some delays are inevitable—maintain flexibility with closing dates when possible</span>
                 </li>
               </ul>
             </Card>

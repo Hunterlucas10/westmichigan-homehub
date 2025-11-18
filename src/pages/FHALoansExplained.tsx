@@ -151,12 +151,361 @@ const FHALoansExplained = () => {
             </Card>
 
             <h2 className="text-3xl font-bold text-foreground mb-6 mt-12">
+              FHA Loan Requirements in Detail
+            </h2>
+            <p className="text-lg text-muted-foreground mb-6">
+              Understanding FHA requirements helps you prepare for the application process:
+            </p>
+
+            <Card className="p-6 mb-8">
+              <h3 className="text-xl font-bold text-foreground mb-4">Credit Score Requirements</h3>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>580+ credit score:</strong> 3.5% down payment required</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>500-579 credit score:</strong> 10% down payment required</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Below 500:</strong> Typically not eligible for FHA loans</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>No credit history:</strong> FHA allows alternative credit documentation (rent, utilities, insurance payments)</span>
+                </li>
+              </ul>
+            </Card>
+
+            <Card className="p-6 mb-8">
+              <h3 className="text-xl font-bold text-foreground mb-4">Debt-to-Income (DTI) Ratio</h3>
+              <p className="text-muted-foreground mb-3">
+                FHA loans are more flexible with debt-to-income ratios than conventional loans:
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Front-end DTI:</strong> Up to 31% (housing costs vs. income)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Back-end DTI:</strong> Up to 43% (all debts vs. income), can go higher with compensating factors</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Compensating factors:</strong> Strong credit, reserves, or stable employment can allow higher DTI</span>
+                </li>
+              </ul>
+            </Card>
+
+            <h2 className="text-3xl font-bold text-foreground mb-6 mt-12">
+              FHA Mortgage Insurance (MIP)
+            </h2>
+            <p className="text-lg text-muted-foreground mb-6">
+              FHA loans require Mortgage Insurance Premium (MIP), which is different from PMI on conventional loans:
+            </p>
+
+            <Card className="p-6 mb-8">
+              <h3 className="text-xl font-bold text-foreground mb-4">Upfront MIP</h3>
+              <p className="text-muted-foreground mb-3">
+                A one-time premium paid at closing (or rolled into the loan):
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Amount:</strong> 1.75% of the loan amount</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Example:</strong> On a $200,000 loan, upfront MIP is $3,500</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Can be financed:</strong> Added to your loan amount, so you don't need cash at closing</span>
+                </li>
+              </ul>
+            </Card>
+
+            <Card className="p-6 mb-8">
+              <h3 className="text-xl font-bold text-foreground mb-4">Annual MIP</h3>
+              <p className="text-muted-foreground mb-3">
+                Paid monthly as part of your mortgage payment:
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Loan term 15+ years, down payment < 10%:</strong> 0.85% annually (0.0708% monthly)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Loan term 15+ years, down payment ≥ 10%:</strong> 0.80% annually (0.0667% monthly)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Loan term < 15 years, down payment < 10%:</strong> 0.70% annually (0.0583% monthly)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Loan term < 15 years, down payment ≥ 10%:</strong> 0.45% annually (0.0375% monthly)</span>
+                </li>
+              </ul>
+              <p className="text-sm text-muted-foreground mt-4">
+                <strong>Important:</strong> Unlike PMI on conventional loans, MIP typically cannot be removed unless you put down 10% or more 
+                (then it's removed after 11 years). For loans with less than 10% down, MIP is for the life of the loan.
+              </p>
+            </Card>
+
+            <h2 className="text-3xl font-bold text-foreground mb-6 mt-12">
+              FHA Loan Limits in West Michigan
+            </h2>
+            <p className="text-lg text-muted-foreground mb-6">
+              FHA loan limits vary by county and are updated annually. For 2024, limits in West Michigan counties include:
+            </p>
+
+            <Card className="p-6 mb-8">
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b">
+                      <th className="text-left p-3 font-bold text-foreground">County</th>
+                      <th className="text-left p-3 font-bold text-foreground">1-Unit Limit</th>
+                      <th className="text-left p-3 font-bold text-foreground">2-Unit Limit</th>
+                      <th className="text-left p-3 font-bold text-foreground">3-Unit Limit</th>
+                      <th className="text-left p-3 font-bold text-foreground">4-Unit Limit</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-b">
+                      <td className="p-3 font-semibold text-foreground">Kent County</td>
+                      <td className="p-3 text-muted-foreground">$498,257</td>
+                      <td className="p-3 text-muted-foreground">$637,950</td>
+                      <td className="p-3 text-muted-foreground">$770,125</td>
+                      <td className="p-3 text-muted-foreground">$956,700</td>
+                    </tr>
+                    <tr className="border-b">
+                      <td className="p-3 font-semibold text-foreground">Ottawa County</td>
+                      <td className="p-3 text-muted-foreground">$498,257</td>
+                      <td className="p-3 text-muted-foreground">$637,950</td>
+                      <td className="p-3 text-muted-foreground">$770,125</td>
+                      <td className="p-3 text-muted-foreground">$956,700</td>
+                    </tr>
+                    <tr>
+                      <td className="p-3 font-semibold text-foreground">Muskegon County</td>
+                      <td className="p-3 text-muted-foreground">$498,257</td>
+                      <td className="p-3 text-muted-foreground">$637,950</td>
+                      <td className="p-3 text-muted-foreground">$770,125</td>
+                      <td className="p-3 text-muted-foreground">$956,700</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="text-sm text-muted-foreground mt-4">
+                <strong>Note:</strong> These limits are for 2024 and are subject to change. Check with your lender for current limits. 
+                Limits are higher for 2-4 unit properties.
+              </p>
+            </Card>
+
+            <h2 className="text-3xl font-bold text-foreground mb-6 mt-12">
+              Property Requirements for FHA Loans
+            </h2>
+            <p className="text-lg text-muted-foreground mb-6">
+              FHA loans have specific property requirements that are stricter than conventional loans:
+            </p>
+
+            <Card className="p-6 bg-muted mb-8">
+              <ul className="space-y-3">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Safety and security:</strong> Home must be safe, secure, and structurally sound</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Property condition:</strong> Must meet minimum property standards (MPS)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Appraisal required:</strong> FHA appraisal is more thorough than conventional</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Repairs:</strong> Seller must fix health and safety issues before closing</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Property types:</strong> Single-family homes, condos (FHA-approved), townhomes, manufactured homes (with restrictions)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Not eligible:</strong> Investment properties, fixer-uppers (unless using FHA 203k), commercial properties</span>
+                </li>
+              </ul>
+            </Card>
+
+            <h2 className="text-3xl font-bold text-foreground mb-6 mt-12">
+              FHA 203k Loans: Buying and Renovating
+            </h2>
+            <p className="text-lg text-muted-foreground mb-6">
+              FHA 203k loans allow you to buy a home that needs repairs and finance both the purchase and renovations:
+            </p>
+
+            <Card className="p-6 mb-8">
+              <h3 className="text-xl font-bold text-foreground mb-3">Standard 203k</h3>
+              <p className="text-muted-foreground mb-3">
+                For major renovations ($5,000+):
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground">Can finance structural repairs, room additions, major renovations</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground">Requires a consultant to oversee the work</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground">More paperwork and longer processing time</span>
+                </li>
+              </ul>
+            </Card>
+
+            <Card className="p-6 mb-8">
+              <h3 className="text-xl font-bold text-foreground mb-3">Limited 203k</h3>
+              <p className="text-muted-foreground mb-3">
+                For minor renovations (up to $35,000):
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground">Simpler process, no consultant required</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground">Faster approval and closing</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground">Good for cosmetic updates, appliances, flooring, HVAC</span>
+                </li>
+              </ul>
+            </Card>
+
+            <h2 className="text-3xl font-bold text-foreground mb-6 mt-12">
               Is an FHA Loan Right for You?
             </h2>
             <p className="text-lg text-muted-foreground mb-6">
               FHA loans are ideal if you have a credit score between 500-679, need a low down payment, or have limited savings. 
               However, keep in mind that FHA loans require mortgage insurance for the life of the loan if you put down less than 10%.
             </p>
+
+            <div className="space-y-4 mb-8">
+              <Card className="p-6">
+                <h3 className="text-xl font-bold text-foreground mb-3">FHA Loans Are Good For:</h3>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                    <span className="text-foreground">First-time homebuyers with limited savings</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                    <span className="text-foreground">Buyers with credit scores below 680</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                    <span className="text-foreground">Those who can't afford 20% down payment</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                    <span className="text-foreground">Buyers with higher debt-to-income ratios</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                    <span className="text-foreground">Those buying homes that need minor repairs (203k)</span>
+                  </li>
+                </ul>
+              </Card>
+              <Card className="p-6">
+                <h3 className="text-xl font-bold text-foreground mb-3">Consider Conventional If:</h3>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                    <span className="text-foreground">You have a credit score of 680+</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                    <span className="text-foreground">You can put down 20% (no PMI) or 10% (PMI can be removed)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                    <span className="text-foreground">You want to avoid lifetime mortgage insurance</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                    <span className="text-foreground">You're buying a property that doesn't meet FHA standards</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                    <span className="text-foreground">You need a loan above FHA limits</span>
+                  </li>
+                </ul>
+              </Card>
+            </div>
+
+            <h2 className="text-3xl font-bold text-foreground mb-6 mt-12">
+              How to Apply for an FHA Loan
+            </h2>
+            <p className="text-lg text-muted-foreground mb-6">
+              The FHA loan application process is similar to conventional loans but with some additional steps:
+            </p>
+
+            <Card className="p-6 bg-muted mb-8">
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-bold text-foreground mb-2">1. Get Pre-Qualified</h4>
+                  <p className="text-muted-foreground">
+                    Work with an FHA-approved lender to determine how much you can borrow. This gives you a realistic budget 
+                    and shows sellers you're serious.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-bold text-foreground mb-2">2. Find an FHA-Approved Lender</h4>
+                  <p className="text-muted-foreground">
+                    Not all lenders are FHA-approved. Work with a lender who specializes in FHA loans and understands the 
+                    unique requirements and process.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-bold text-foreground mb-2">3. Gather Documentation</h4>
+                  <p className="text-muted-foreground">
+                    You'll need pay stubs, W-2s, tax returns, bank statements, and proof of any gift funds. FHA may also 
+                    require explanations for credit issues or gaps in employment.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-bold text-foreground mb-2">4. Property Appraisal</h4>
+                  <p className="text-muted-foreground">
+                    FHA requires a specific appraisal that checks both value and property condition. The appraiser will note 
+                    any required repairs that must be completed before closing.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-bold text-foreground mb-2">5. Underwriting and Approval</h4>
+                  <p className="text-muted-foreground">
+                    FHA underwriting can be more flexible than conventional, but still thorough. Be prepared to provide additional 
+                    documentation if requested.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-bold text-foreground mb-2">6. Closing</h4>
+                  <p className="text-muted-foreground">
+                    Once approved, you'll close on your home. FHA loans typically take 30-45 days from application to closing, 
+                    similar to conventional loans.
+                  </p>
+                </div>
+              </div>
+            </Card>
           </div>
         </div>
       </section>

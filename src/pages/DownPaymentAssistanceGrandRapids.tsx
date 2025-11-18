@@ -122,12 +122,315 @@ const DownPaymentAssistanceGrandRapids = () => {
             </div>
 
             <h2 className="text-3xl font-bold text-foreground mb-6 mt-12">
+              Program Details and Eligibility
+            </h2>
+            <p className="text-lg text-muted-foreground mb-6">
+              Each program has specific requirements and benefits. Here's what you need to know:
+            </p>
+
+            <Card className="p-6 mb-8">
+              <h3 className="text-xl font-bold text-foreground mb-4">MSHDA Down Payment Assistance</h3>
+              <p className="text-muted-foreground mb-3">
+                <strong>Amount:</strong> Up to $10,000 (or 10% of purchase price, whichever is less)
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Credit score:</strong> Minimum 640 (660 for manufactured homes)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Income limits:</strong> Varies by county and household size (check current limits)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Purchase price limits:</strong> Must be within MSHDA limits for your area</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Repayment:</strong> Zero-interest second mortgage, repaid when you sell or refinance</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Forgiveness:</strong> 20% forgiven each year for 5 years if you stay in the home</span>
+                </li>
+              </ul>
+            </Card>
+
+            <Card className="p-6 mb-8">
+              <h3 className="text-xl font-bold text-foreground mb-4">Grand Rapids Homebuyer Assistance Fund</h3>
+              <p className="text-muted-foreground mb-3">
+                <strong>Amount:</strong> Up to $7,500
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Location requirement:</strong> Must live or work within Grand Rapids city limits</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>First-time buyer:</strong> Typically required (haven't owned a home in 3 years)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Income limits:</strong> Usually 80% of area median income (AMI)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Property requirements:</strong> Must be within city limits, may have condition requirements</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Application:</strong> Through approved lenders or city housing department</span>
+                </li>
+              </ul>
+            </Card>
+
+            <Card className="p-6 mb-8">
+              <h3 className="text-xl font-bold text-foreground mb-4">Kent County Community Development DPA</h3>
+              <p className="text-muted-foreground mb-3">
+                <strong>Amount:</strong> Varies by program and funding availability
+              </p>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Service area:</strong> Throughout Kent County (including Grand Rapids)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Income limits:</strong> Typically 80-120% of area median income</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Target areas:</strong> Some programs focus on specific neighborhoods or census tracts</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Homebuyer education:</strong> Often required</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Funding:</strong> May have limited funds and operate on first-come, first-served basis</span>
+                </li>
+              </ul>
+            </Card>
+
+            <h2 className="text-3xl font-bold text-foreground mb-6 mt-12">
+              Can You Combine Programs?
+            </h2>
+            <p className="text-lg text-muted-foreground mb-6">
+              In some cases, you may be able to combine multiple down payment assistance programs:
+            </p>
+
+            <Card className="p-6 bg-muted mb-8">
+              <h3 className="text-xl font-bold text-foreground mb-4">Combining Assistance Programs</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>MSHDA + City/County programs:</strong> Sometimes possible, but total assistance may be capped</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Lender restrictions:</strong> Some lenders may limit how much total assistance you can receive</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Loan type matters:</strong> FHA, conventional, and other loan types have different rules</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Work with experienced lender:</strong> A lender familiar with local programs can help you maximize assistance</span>
+                </li>
+              </ul>
+              <p className="text-sm text-muted-foreground mt-4">
+                <strong>Example:</strong> You might be able to combine $7,500 from Grand Rapids Homebuyer Assistance Fund with $2,500 from MSHDA 
+                (if you need less than the full $10,000 MSHDA amount), giving you $10,000 total assistance.
+              </p>
+            </Card>
+
+            <h2 className="text-3xl font-bold text-foreground mb-6 mt-12">
+              Real-World Example: Buying in Grand Rapids
+            </h2>
+            <p className="text-lg text-muted-foreground mb-6">
+              Here's how down payment assistance can work for a typical Grand Rapids homebuyer:
+            </p>
+
+            <Card className="p-6 mb-8">
+              <h3 className="text-xl font-bold text-foreground mb-4">Scenario: $200,000 Home Purchase</h3>
+              <div className="space-y-3 mb-4">
+                <div className="flex justify-between">
+                  <span className="text-foreground">Purchase price:</span>
+                  <span className="text-foreground font-semibold">$200,000</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-foreground">Down payment (3.5% FHA):</span>
+                  <span className="text-foreground font-semibold">$7,000</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-foreground">Closing costs (estimated):</span>
+                  <span className="text-foreground font-semibold">$3,000</span>
+                </div>
+                <div className="flex justify-between border-t pt-2 mt-2">
+                  <span className="text-foreground font-bold">Total needed:</span>
+                  <span className="text-foreground font-bold">$10,000</span>
+                </div>
+              </div>
+              <div className="space-y-2 mb-4">
+                <p className="text-muted-foreground font-semibold">Option 1: MSHDA Only</p>
+                <div className="flex justify-between pl-4">
+                  <span className="text-foreground">MSHDA assistance:</span>
+                  <span className="text-foreground font-semibold text-secondary">$10,000</span>
+                </div>
+                <div className="flex justify-between pl-4 border-t pt-2 mt-2">
+                  <span className="text-foreground font-bold">Your cash needed:</span>
+                  <span className="text-foreground font-bold">$0</span>
+                </div>
+              </div>
+              <div className="space-y-2">
+                <p className="text-muted-foreground font-semibold">Option 2: Combine Programs</p>
+                <div className="flex justify-between pl-4">
+                  <span className="text-foreground">Grand Rapids assistance:</span>
+                  <span className="text-foreground font-semibold text-secondary">$7,500</span>
+                </div>
+                <div className="flex justify-between pl-4">
+                  <span className="text-foreground">MSHDA assistance:</span>
+                  <span className="text-foreground font-semibold text-secondary">$2,500</span>
+                </div>
+                <div className="flex justify-between pl-4 border-t pt-2 mt-2">
+                  <span className="text-foreground font-bold">Total assistance:</span>
+                  <span className="text-foreground font-bold text-secondary">$10,000</span>
+                </div>
+                <div className="flex justify-between pl-4 border-t pt-2 mt-2">
+                  <span className="text-foreground font-bold">Your cash needed:</span>
+                  <span className="text-foreground font-bold">$0</span>
+                </div>
+              </div>
+            </Card>
+
+            <h2 className="text-3xl font-bold text-foreground mb-6 mt-12">
               How to Apply
             </h2>
             <p className="text-lg text-muted-foreground mb-6">
               Most down payment assistance programs in Grand Rapids are applied through your lender. Start by getting 
               pre-qualified with a local lender who understands these programs and can help you determine which ones you qualify for.
             </p>
+
+            <Card className="p-6 bg-muted mb-8">
+              <h3 className="text-xl font-bold text-foreground mb-4">Application Process</h3>
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-bold text-foreground mb-2">1. Get Pre-Qualified</h4>
+                  <p className="text-muted-foreground">
+                    Work with a local lender who knows Grand Rapids assistance programs. They'll review your income, credit, 
+                    and situation to determine which programs you qualify for.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-bold text-foreground mb-2">2. Determine Eligibility</h4>
+                  <p className="text-muted-foreground">
+                    Your lender will check income limits, credit requirements, and location requirements for each program. 
+                    They'll help you understand which programs are available to you.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-bold text-foreground mb-2">3. Complete Required Education</h4>
+                  <p className="text-muted-foreground">
+                    Many programs require homebuyer education. Your lender can help you find approved courses, which are 
+                    often available online or in-person.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-bold text-foreground mb-2">4. Find a Home</h4>
+                  <p className="text-muted-foreground">
+                    Work with a real estate agent to find a home that meets program requirements (location, price, condition). 
+                    Your lender will provide a pre-approval letter showing you're qualified for assistance.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-bold text-foreground mb-2">5. Apply for Assistance</h4>
+                  <p className="text-muted-foreground">
+                    Once you have a purchase agreement, your lender will submit applications for the assistance programs 
+                    you qualify for. This may include MSHDA, city, and/or county programs.
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-bold text-foreground mb-2">6. Close on Your Home</h4>
+                  <p className="text-muted-foreground">
+                    At closing, the assistance funds are applied to your down payment and closing costs. You'll sign documents 
+                    for your first mortgage and any second mortgages (for assistance programs that require repayment).
+                  </p>
+                </div>
+              </div>
+            </Card>
+
+            <h2 className="text-3xl font-bold text-foreground mb-6 mt-12">
+              Important Considerations
+            </h2>
+            <p className="text-lg text-muted-foreground mb-6">
+              Before applying for down payment assistance, consider these factors:
+            </p>
+
+            <Card className="p-6 mb-8">
+              <ul className="space-y-3">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Repayment terms:</strong> Understand when and how assistance must be repaid (if at all)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Property restrictions:</strong> Some programs have restrictions on where you can buy or property types</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Income limits:</strong> Make sure your household income is within program limits</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Funding availability:</strong> Some programs have limited funds and may run out</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Timeline:</strong> Assistance programs may add time to your closing process</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Lender requirements:</strong> Not all lenders work with all assistance programs</span>
+                </li>
+              </ul>
+            </Card>
+
+            <h2 className="text-3xl font-bold text-foreground mb-6 mt-12">
+              Finding the Right Lender
+            </h2>
+            <p className="text-lg text-muted-foreground mb-6">
+              Working with a lender who understands local assistance programs is crucial:
+            </p>
+
+            <Card className="p-6 bg-muted mb-8">
+              <h3 className="text-xl font-bold text-foreground mb-4">What to Look For</h3>
+              <ul className="space-y-2">
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>MSHDA-approved:</strong> Must be MSHDA-approved to offer MSHDA programs</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Local knowledge:</strong> Familiar with Grand Rapids and Kent County programs</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Experience:</strong> Has successfully closed loans with assistance programs</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Communication:</strong> Explains programs clearly and helps you understand your options</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
+                  <span className="text-foreground"><strong>Resources:</strong> Can help you find homebuyer education courses and navigate the process</span>
+                </li>
+              </ul>
+            </Card>
           </div>
         </div>
       </section>
