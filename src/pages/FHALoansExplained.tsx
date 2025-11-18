@@ -236,19 +236,19 @@ const FHALoansExplained = () => {
               <ul className="space-y-2">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
-                  <span className="text-foreground"><strong>Loan term 15+ years, down payment < 10%:</strong> 0.85% annually (0.0708% monthly)</span>
+                  <span className="text-foreground"><strong>Loan term 15+ years, down payment &lt; 10%:</strong> 0.85% annually (0.0708% monthly)</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
-                  <span className="text-foreground"><strong>Loan term 15+ years, down payment ≥ 10%:</strong> 0.80% annually (0.0667% monthly)</span>
+                  <span className="text-foreground"><strong>Loan term 15+ years, down payment &ge; 10%:</strong> 0.80% annually (0.0667% monthly)</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
-                  <span className="text-foreground"><strong>Loan term < 15 years, down payment < 10%:</strong> 0.70% annually (0.0583% monthly)</span>
+                  <span className="text-foreground"><strong>Loan term &lt; 15 years, down payment &lt; 10%:</strong> 0.70% annually (0.0583% monthly)</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="w-5 h-5 text-secondary flex-shrink-0 mt-0.5" />
-                  <span className="text-foreground"><strong>Loan term < 15 years, down payment ≥ 10%:</strong> 0.45% annually (0.0375% monthly)</span>
+                  <span className="text-foreground"><strong>Loan term &lt; 15 years, down payment &ge; 10%:</strong> 0.45% annually (0.0375% monthly)</span>
                 </li>
               </ul>
               <p className="text-sm text-muted-foreground mt-4">
