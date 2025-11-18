@@ -5,7 +5,7 @@ import LeadForm from "@/components/LeadForm";
 import FAQ from "@/components/FAQ";
 import SuccessStories from "@/components/SuccessStories";
 import { Card } from "@/components/ui/card";
-import { Mail, Phone, MapPin, Clock, CheckCircle } from "lucide-react";
+import { Mail, Clock, CheckCircle } from "lucide-react";
 import { BreadcrumbSchema, LocalBusinessSchema } from "@/components/StructuredData";
 
 const SITE_URL = "https://westmichigan-homehub.com";
@@ -65,36 +65,11 @@ const Contact = () => {
               <div className="space-y-6 mb-8">
                 <Card className="p-6">
                   <div className="flex items-start gap-4">
-                    <MapPin className="w-6 h-6 text-secondary flex-shrink-0 mt-1" />
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">Address</h3>
-                      <p className="text-muted-foreground">
-                        Grand Rapids, MI<br />
-                        Serving all of West Michigan
-                      </p>
-                    </div>
-                  </div>
-                </Card>
-
-                <Card className="p-6">
-                  <div className="flex items-start gap-4">
-                    <Phone className="w-6 h-6 text-secondary flex-shrink-0 mt-1" />
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">Phone</h3>
-                      <a href="tel:+16165551234" className="text-primary hover:underline">
-                        (616) 555-1234
-                      </a>
-                    </div>
-                  </div>
-                </Card>
-
-                <Card className="p-6">
-                  <div className="flex items-start gap-4">
                     <Mail className="w-6 h-6 text-secondary flex-shrink-0 mt-1" />
                     <div>
                       <h3 className="font-semibold text-foreground mb-1">Email</h3>
-                      <a href="mailto:info@wmhomebuyerhub.com" className="text-primary hover:underline">
-                        info@wmhomebuyerhub.com
+                      <a href="mailto:info@wmihomebuyer.com" className="text-primary hover:underline">
+                        info@wmihomebuyer.com
                       </a>
                     </div>
                   </div>

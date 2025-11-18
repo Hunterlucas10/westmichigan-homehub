@@ -34,19 +34,6 @@ const StickyCTA = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Handle hash navigation on contact page
-  useEffect(() => {
-    if (location.pathname === '/contact' && location.hash === '#contact-form') {
-      // Small delay to ensure page is rendered
-      setTimeout(() => {
-        const formElement = document.getElementById('contact-form');
-        if (formElement) {
-          formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 100);
-    }
-  }, [location]);
-
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
     
@@ -54,10 +41,17 @@ const StickyCTA = () => {
       // If already on contact page, scroll to form
       const formElement = document.getElementById('contact-form');
       if (formElement) {
-        formElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const headerOffset = 80;
+        const elementPosition = formElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
       }
     } else {
-      // Navigate to contact page with hash
+      // Navigate to contact page with hash - global handler will scroll
       navigate('/contact#contact-form');
     }
   };
@@ -68,14 +62,14 @@ const StickyCTA = () => {
   }
 
   return (
-    <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 animate-in fade-in slide-in-from-bottom-4">
+    <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 animate-in fade-in slide-in-from-bottom-4 overflow-hidden">
       <Button
         onClick={handleClick}
         size="lg"
-        className="rounded-full shadow-lg bg-accent hover:bg-accent/90 text-sm md:text-lg px-4 py-4 md:px-6 md:py-6 h-auto"
+        className="rounded-full shadow-lg bg-accent hover:bg-accent/90 text-sm md:text-lg px-4 py-4 md:px-6 md:py-6 h-auto overflow-hidden"
       >
-        <ArrowUp className="w-4 h-4 md:w-5 md:h-5 mr-1 md:mr-2" />
-        Get Pre-Qualified
+        <ArrowUp className="w-4 h-4 md:w-5 md:h-5 mr-1 md:mr-2 flex-shrink-0" />
+        <span className="whitespace-nowrap">Get Pre-Qualified</span>
       </Button>
     </div>
   );

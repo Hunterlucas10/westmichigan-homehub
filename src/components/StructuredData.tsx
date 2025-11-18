@@ -22,12 +22,6 @@ export const OrganizationSchema = ({
     url,
     logo,
     description,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Grand Rapids",
-      addressRegion: "MI",
-      addressCountry: "US"
-    },
     areaServed: {
       "@type": "State",
       name: "Michigan"
@@ -117,8 +111,6 @@ export const BreadcrumbSchema = ({ items }: BreadcrumbSchemaProps) => {
 interface LocalBusinessSchemaProps {
   name?: string;
   description?: string;
-  address?: string;
-  phone?: string;
   email?: string;
   url?: string;
 }
@@ -126,9 +118,7 @@ interface LocalBusinessSchemaProps {
 export const LocalBusinessSchema = ({
   name = "West Michigan Homebuyer Hub",
   description = "Connecting West Michigan homebuyers with trusted local lenders specializing in affordable loan programs.",
-  address = "Grand Rapids, MI",
-  phone = "(616) 555-1234",
-  email = "info@wmhomebuyerhub.com",
+  email = "info@wmihomebuyer.com",
   url = SITE_URL
 }: LocalBusinessSchemaProps) => {
   const schema = {
@@ -136,13 +126,6 @@ export const LocalBusinessSchema = ({
     "@type": "LocalBusiness",
     name,
     description,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Grand Rapids",
-      addressRegion: "MI",
-      addressCountry: "US"
-    },
-    telephone: phone,
     email,
     url,
     areaServed: {

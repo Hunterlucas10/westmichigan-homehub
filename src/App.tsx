@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Analytics } from "@/components/Analytics";
 import StickyCTA from "@/components/StickyCTA";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
+import HashNavigation from "@/components/HashNavigation";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import LearningCenter from "./pages/LearningCenter";
@@ -58,6 +59,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Analytics />
+        <HashNavigation />
         <StickyCTA />
         <ExitIntentPopup />
         <Routes>

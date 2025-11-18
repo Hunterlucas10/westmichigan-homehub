@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Home, Mail, Phone, MapPin } from "lucide-react";
+import { Home, Mail } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -56,19 +56,9 @@ const Footer = () => {
             <h3 className="font-semibold text-lg mb-4">Contact</h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-2">
-                <MapPin className="w-5 h-5 mt-0.5 flex-shrink-0" />
-                <span className="text-primary-foreground/80">Grand Rapids, MI</span>
-              </li>
-              <li className="flex items-start gap-2">
                 <Mail className="w-5 h-5 mt-0.5 flex-shrink-0" />
-                <a href="mailto:info@wmhomebuyerhub.com" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                  info@wmhomebuyerhub.com
-                </a>
-              </li>
-              <li className="flex items-start gap-2">
-                <Phone className="w-5 h-5 mt-0.5 flex-shrink-0" />
-                <a href="tel:+16165551234" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
-                  (616) 555-1234
+                <a href="mailto:info@wmihomebuyer.com" className="text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+                  info@wmihomebuyer.com
                 </a>
               </li>
             </ul>
