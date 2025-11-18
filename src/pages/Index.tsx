@@ -142,7 +142,7 @@ const Index = () => {
             </div>
 
             {/* Right Column - Quiz */}
-            <div id="lead-form">
+            <div id="homeownership-quiz">
               <HomeownershipQuiz />
             </div>
           </div>
@@ -245,7 +245,7 @@ const Index = () => {
               </Button>
             </div>
 
-            <Card className="p-8 bg-muted">
+            <Card className="p-8 bg-muted" id="lead-form">
               <h3 className="text-2xl font-bold text-foreground mb-4">Not Sure Where to Start?</h3>
               <p className="text-muted-foreground mb-6">
                 Our local lending partners will help you understand which programs you qualify for 
