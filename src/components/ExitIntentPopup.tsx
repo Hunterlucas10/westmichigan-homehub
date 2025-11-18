@@ -99,8 +99,8 @@ const ExitIntentPopup = () => {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="max-w-md max-h-[90vh] overflow-y-auto">
-        <DialogHeader>
+      <DialogContent className="max-w-md max-h-[90vh] overflow-hidden flex flex-col">
+        <DialogHeader className="flex-shrink-0">
           <DialogTitle className="text-xl md:text-2xl text-center">
             Can We Make This Easier for You?
           </DialogTitle>
@@ -109,7 +109,7 @@ const ExitIntentPopup = () => {
           </DialogDescription>
         </DialogHeader>
 
-        <form onSubmit={handleSubmit} className="space-y-3 pt-2">
+        <form onSubmit={handleSubmit} className="space-y-3 pt-2 flex-shrink-0">
           <div>
             <Label htmlFor="exit-name" className="text-sm">Full Name *</Label>
             <Input
