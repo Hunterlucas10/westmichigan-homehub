@@ -5,7 +5,7 @@ import LeadForm from "@/components/LeadForm";
 import FAQ from "@/components/FAQ";
 import SuccessStories from "@/components/SuccessStories";
 import { Card } from "@/components/ui/card";
-import { Mail, Clock, CheckCircle } from "lucide-react";
+import { Mail, CheckCircle } from "lucide-react";
 import { BreadcrumbSchema, LocalBusinessSchema } from "@/components/StructuredData";
 
 const SITE_URL = "https://westmichigan-homehub.com";
@@ -71,20 +71,6 @@ const Contact = () => {
                       <a href="mailto:info@wmihomebuyer.com" className="text-primary hover:underline">
                         info@wmihomebuyer.com
                       </a>
-                    </div>
-                  </div>
-                </Card>
-
-                <Card className="p-6">
-                  <div className="flex items-start gap-4">
-                    <Clock className="w-6 h-6 text-secondary flex-shrink-0 mt-1" />
-                    <div>
-                      <h3 className="font-semibold text-foreground mb-1">Hours</h3>
-                      <p className="text-muted-foreground">
-                        Monday - Friday: 9:00 AM - 6:00 PM<br />
-                        Saturday: 10:00 AM - 2:00 PM<br />
-                        Sunday: Closed
-                      </p>
                     </div>
                   </div>
                 </Card>
