@@ -142,6 +142,51 @@ const MSHDAMiHomeLoanGuide = () => {
         </div>
       </section>
 
+      {/* Related Articles */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-3xl font-bold text-foreground mb-8 text-center">Related Articles</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card className="p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-bold text-foreground mb-3">MSHDA Info Center</h3>
+              <p className="text-muted-foreground mb-4">
+                Complete guide to MSHDA down payment assistance and Mortgage Credit Certificate (MCC) tax credit in West Michigan.
+              </p>
+              <Link to="/mshda-info-center" className="text-primary hover:underline font-medium inline-flex items-center gap-1">
+                Read Guide <ChevronRight className="w-4 h-4" />
+              </Link>
+            </Card>
+            <Card className="p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-bold text-foreground mb-3">MSHDA Loans Michigan</h3>
+              <p className="text-muted-foreground mb-4">
+                Learn about MSHDA MI Home Loan eligibility, benefits, income limits, and how to apply in West Michigan.
+              </p>
+              <Link to="/mshda-loans-michigan" className="text-primary hover:underline font-medium inline-flex items-center gap-1">
+                Read Guide <ChevronRight className="w-4 h-4" />
+              </Link>
+            </Card>
+            <Card className="p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-bold text-foreground mb-3">Down Payment Assistance in West Michigan</h3>
+              <p className="text-muted-foreground mb-4">
+                See every down payment assistance program available in West Michigan, including MSHDA and local grants.
+              </p>
+              <Link to="/down-payment-assistance-west-michigan" className="text-primary hover:underline font-medium inline-flex items-center gap-1">
+                Read Guide <ChevronRight className="w-4 h-4" />
+              </Link>
+            </Card>
+            <Card className="p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-bold text-foreground mb-3">First-Time Homebuyer Programs</h3>
+              <p className="text-muted-foreground mb-4">
+                Discover the best first-time homebuyer programs for West Michigan residents, including MSHDA options.
+              </p>
+              <Link to="/first-time-homebuyer-programs-west-michigan" className="text-primary hover:underline font-medium inline-flex items-center gap-1">
+                Read Guide <ChevronRight className="w-4 h-4" />
+              </Link>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       <section className="py-16 px-4 bg-muted">
         <div className="container mx-auto max-w-2xl">
           <div className="text-center mb-8">

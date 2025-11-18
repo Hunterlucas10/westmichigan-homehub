@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MapPin, TrendingUp, TrendingDown, ArrowRight } from "lucide-react";
-import { BreadcrumbSchema } from "@/components/StructuredData";
+import { ArticleSchema, BreadcrumbSchema } from "@/components/StructuredData";
 
 const SITE_URL = "https://westmichigan-homehub.com";
 
@@ -104,6 +104,11 @@ const WestMichiganLiving = () => {
         <meta name="twitter:description" content="Discover what it's like to live in West Michigan counties." />
         <meta name="twitter:image" content={`${SITE_URL}/og-image-west-michigan-living.jpg`} />
       </Helmet>
+      <ArticleSchema 
+        title="West Michigan Living | Explore Counties & Communities"
+        description="Discover what it's like to live in West Michigan counties. Learn about cities, schools, lifestyle, and housing in Kent, Ottawa, Allegan, Muskegon, and other West Michigan counties."
+        url="/west-michigan-living"
+      />
       <BreadcrumbSchema items={[{ name: "Home", url: "/" }, { name: "West Michigan Living", url: "/west-michigan-living" }]} />
       <Navigation />
       

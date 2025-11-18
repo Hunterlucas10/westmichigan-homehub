@@ -161,6 +161,51 @@ const FHALoansExplained = () => {
         </div>
       </section>
 
+      {/* Related Articles */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-3xl font-bold text-foreground mb-8 text-center">Related Articles</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card className="p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-bold text-foreground mb-3">How to Buy a Home with a Low Credit Score</h3>
+              <p className="text-muted-foreground mb-4">
+                Learn which loan programs are available for buyers with credit challenges and how to improve your chances of approval.
+              </p>
+              <Link to="/blog/low-credit-score-home-buying" className="text-primary hover:underline font-medium inline-flex items-center gap-1">
+                Read Article <ChevronRight className="w-4 h-4" />
+              </Link>
+            </Card>
+            <Card className="p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-bold text-foreground mb-3">Credit Score Requirements by Loan Type</h3>
+              <p className="text-muted-foreground mb-4">
+                Understand the minimum credit score requirements for FHA, VA, conventional, and other loan programs in Michigan.
+              </p>
+              <Link to="/blog/credit-score-requirements-by-loan-type" className="text-primary hover:underline font-medium inline-flex items-center gap-1">
+                Read Article <ChevronRight className="w-4 h-4" />
+              </Link>
+            </Card>
+            <Card className="p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-bold text-foreground mb-3">Low Down Payment Options in Michigan</h3>
+              <p className="text-muted-foreground mb-4">
+                Explore all available low down payment mortgage options, from 3% to 3.5% down payment programs.
+              </p>
+              <Link to="/low-down-payment-michigan" className="text-primary hover:underline font-medium inline-flex items-center gap-1">
+                Read Guide <ChevronRight className="w-4 h-4" />
+              </Link>
+            </Card>
+            <Card className="p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-bold text-foreground mb-3">Understanding PMI</h3>
+              <p className="text-muted-foreground mb-4">
+                Learn what PMI is, when you need it, how much it costs, and how to avoid or remove it from your mortgage payment.
+              </p>
+              <Link to="/blog/understanding-pmi" className="text-primary hover:underline font-medium inline-flex items-center gap-1">
+                Read Article <ChevronRight className="w-4 h-4" />
+              </Link>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       <section className="py-16 px-4 bg-muted">
         <div className="container mx-auto max-w-2xl">
           <div className="text-center mb-8">

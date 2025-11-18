@@ -150,6 +150,51 @@ const HomeBuyingProcessStepByStep = () => {
         </div>
       </section>
 
+      {/* Related Articles */}
+      <section className="py-16 px-4">
+        <div className="container mx-auto max-w-4xl">
+          <h2 className="text-3xl font-bold text-foreground mb-8 text-center">Related Articles</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card className="p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-bold text-foreground mb-3">Pre-Approval vs Pre-Qualification</h3>
+              <p className="text-muted-foreground mb-4">
+                Learn the key differences between pre-approval and pre-qualification and why it matters for your home search.
+              </p>
+              <Link to="/blog/pre-approval-vs-pre-qualification" className="text-primary hover:underline font-medium inline-flex items-center gap-1">
+                Read Article <ChevronRight className="w-4 h-4" />
+              </Link>
+            </Card>
+            <Card className="p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-bold text-foreground mb-3">Home Inspection Checklist</h3>
+              <p className="text-muted-foreground mb-4">
+                Complete guide to home inspections, what inspectors check, and how to use inspection results in negotiations.
+              </p>
+              <Link to="/blog/home-inspection-checklist" className="text-primary hover:underline font-medium inline-flex items-center gap-1">
+                Read Article <ChevronRight className="w-4 h-4" />
+              </Link>
+            </Card>
+            <Card className="p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-bold text-foreground mb-3">Closing Costs in Michigan</h3>
+              <p className="text-muted-foreground mb-4">
+                Understand all the closing costs you'll encounter when buying a home in Michigan and how to prepare for them.
+              </p>
+              <Link to="/blog/closing-costs-michigan" className="text-primary hover:underline font-medium inline-flex items-center gap-1">
+                Read Article <ChevronRight className="w-4 h-4" />
+              </Link>
+            </Card>
+            <Card className="p-6 hover:shadow-lg transition-shadow">
+              <h3 className="text-xl font-bold text-foreground mb-3">First-Time Homebuyer Programs</h3>
+              <p className="text-muted-foreground mb-4">
+                Discover the best first-time homebuyer programs for West Michigan residents, including MSHDA and FHA options.
+              </p>
+              <Link to="/first-time-homebuyer-programs-west-michigan" className="text-primary hover:underline font-medium inline-flex items-center gap-1">
+                Read Guide <ChevronRight className="w-4 h-4" />
+              </Link>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       <section className="py-16 px-4 bg-muted">
         <div className="container mx-auto max-w-2xl">
           <div className="text-center mb-8">

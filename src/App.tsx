@@ -46,6 +46,7 @@ import BarryCounty from "./pages/counties/BarryCounty";
 import CalhounCounty from "./pages/counties/CalhounCounty";
 import EatonCounty from "./pages/counties/EatonCounty";
 import IoniaCounty from "./pages/counties/IoniaCounty";
+import Sitemap from "./pages/Sitemap";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -100,6 +101,7 @@ const App = () => (
           <Route path="/west-michigan-living/calhoun-county" element={<CalhounCounty />} />
           <Route path="/west-michigan-living/eaton-county" element={<EatonCounty />} />
           <Route path="/west-michigan-living/ionia-county" element={<IoniaCounty />} />
+          <Route path="/sitemap" element={<Sitemap />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
